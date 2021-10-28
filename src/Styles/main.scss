@@ -1,5 +1,9 @@
-// Components
-@import 'Components/header';
+// Layout
+@import 'Layout/header';
+@import 'Layout/home';
+
+// Container
+@import 'Components/LoginModal.scss';
 
 // Mixins
 @import 'Abstracts/mixins';

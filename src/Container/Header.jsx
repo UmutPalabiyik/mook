@@ -1,5 +1,3 @@
-import "../Styles/main.scss";
-
 const Header = () => {
   return (
     <header className="header">
@@ -16,7 +14,7 @@ const Header = () => {
           </a>
         </li>
         <li className="header__item">
-            <span className="header__text header__login">Sign Up / Login</span>
+            <span className="header__text header__login">Join the team</span>
         </li>
       </ul>
     </header>
