@@ -6,9 +6,13 @@
     top: 0;
     width: 100%;
     height: 100vh;
-    box-shadow: inset 0 0 0 1000px rgba(0,0,0,.5);
+    box-shadow: inset 0 0 0 1000px rgba(0,0,0,.8);
     @include flexbox($justify-content: center ,$align-items: center);
+    display: none;
 
+    &--show{
+        display: flex;
+    }
 
     // FORM
     &__form{
@@ -70,10 +74,27 @@
 
     &__cover{
         position: absolute;
-        left: 0;
         top: 0;
+        transition: left .2s linear, right .2s linear;
+        z-index: 1;
+        cursor: pointer;
+    }
+
+    &__cover--left{
+        left: 0;
         border-top-left-radius: 3rem;
         border-bottom-left-radius: 3rem;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        filter: drop-shadow(10px 4px 4px rgba(0, 0, 0, 0.25));
+    }
+
+    &__cover--right{
+        left: 50%;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 3rem;
+        border-bottom-right-radius: 3rem;
     }
 
     &__icon{
@@ -102,7 +123,8 @@
         border-bottom-left-radius: 3rem;
         padding: 1.5rem;
         cursor: pointer;
-        
+        filter: drop-shadow(10px 4px 4px rgba(0, 0, 0, 0.25));
+
     }
 
     &__header{
@@ -127,4 +149,7 @@
 
     }
 
+    &__img-container{
+        position: relative;
+    }
 }

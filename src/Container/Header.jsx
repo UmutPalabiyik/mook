@@ -1,4 +1,10 @@
-const Header = () => {
+
+const Header = ({toggleModalShow}) => {
+
+  const showModal = () => {
+    toggleModalShow()
+  }
+
   return (
     <header className="header">
         <p className="header__logo">mook</p>
@@ -14,7 +20,7 @@ const Header = () => {
           </a>
         </li>
         <li className="header__item">
-            <span className="header__text header__login">Join the team</span>
+            <span className="header__text header__login" onClick={showModal}>Join the team</span>
         </li>
       </ul>
     </header>
