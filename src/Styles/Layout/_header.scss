@@ -1,56 +1,99 @@
-@import '../Abstracts/mixins';
+@import "../Abstracts/mixins";
+@import "../Abstracts/variables";
 
-.header{
-    height: 72px;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgba(122, 95, 232, .5);
-    padding: 0 5rem;
-    font-family: 'Roboto', sans-serif;
-    position: fixed;
-    z-index: 1000;
+.header {
+  height: 72px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: $header-background;
+  padding: 0 5rem;
+  font-family: "Roboto", sans-serif;
+  position: relative;
+  z-index: 1000;
 
-    @include flexbox($justify-content: space-between ,$align-items: center);
+  @include flexbox($justify-content: space-between, $align-items: center);
 
+  &__list {
+    @include flexbox();
+  }
 
-    &__list{
-        @include flexbox();
+  &__item {
+    margin-left: 1rem;
+    transition: 0.3s all;
+    letter-spacing: 0.8px;
+
+    &:hover {
+      transform: scale(1.1);
     }
+  }
 
-    &__item{
-        margin-left: 1rem;
-        transition: .3s all;
-        letter-spacing: .8px;
+  &__logo {
+    color: #ffff;
+    font-size: 3rem;
+    letter-spacing: 1px;
+    transition: 0.3s all;
+    cursor: pointer;
+    font-weight: 700;
 
-        &:hover{
-            transform: scale(1.10);
-        }
+    &:hover {
+      letter-spacing: 5px;
+    }
+  }
+
+  &__text {
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #ffff;
+  }
+
+  &__login {
+    color: #f19066;
+  }
+
+  &__hamburger {
+    width: 32px;
+    height: 32px;
+    display: none;
+  }
+
+
+
+  @media screen and (max-width: $medium) {
+    & {
+      padding: 0 2rem;
     }
 
     &__logo{
-        color: #ffff;
-        font-size: 3rem;
-        letter-spacing: 1px;
-        transition: .3s all;
-        cursor: pointer;
-        font-weight: 700;
+        font-size: 2rem;
+    }
+  }
 
-        &:hover{
-            letter-spacing: 5px;
+  @media screen and (max-width: $small) {
+    &__hamburger {
+      display: flex;
+      color: $white;
+    }
+
+    &__list{
+        width: 100%;
+        height: calc(100vh - 72px);
+        position: absolute;
+        top: 72px;
+        left: 0;
+        background-color: rgba(119, 102, 187, 0.5);
+        @include flexbox($direction: column, $justify-content: flex-start, $align-items: center);
+        
+        li{
+            margin-top: 1.5rem;
         }
-    }
 
-    &__text{
-        cursor: pointer;
-        font-size: 1.2rem;
-        color: #ffff;
-    }
+        &--responsive{
+            display: none;
+        }
 
-    &__login{
-        color: #f19066;
-    }
+      }
 
+  }
 }
-

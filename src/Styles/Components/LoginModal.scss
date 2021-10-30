@@ -28,6 +28,12 @@
         letter-spacing: 3px;
         font-weight: 700;
         cursor: pointer;
+        transition: all .2s;
+        text-align: center;
+
+        &:hover{
+            letter-spacing: 4px;
+        }
 
         &--register{
             color: #20AFB8;
@@ -37,6 +43,12 @@
             color: #BA5922;
         }
 
+    }
+
+    &__close{
+        &:hover{
+            
+        }
     }
 
     &__input{
@@ -51,6 +63,7 @@
         &::placeholder{
             color: #ffff;
             font-size: 1rem;
+            letter-spacing: .5px;
         }
     }
 
@@ -67,6 +80,7 @@
         color: #ffff;
         background-color: #fff;
         display: flex;
+        animation: slideUp .5s ease;
 
         position: relative;
 
@@ -152,4 +166,14 @@
     &__img-container{
         position: relative;
     }
+
+    @keyframes slideUp {
+        0% {
+          transform: translateY(300px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+
 }

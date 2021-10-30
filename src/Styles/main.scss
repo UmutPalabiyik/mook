@@ -5,8 +5,9 @@
 // Container
 @import 'Components/LoginModal.scss';
 
-// Mixins
+// Abstracts
 @import 'Abstracts/mixins';
+@import 'Abstracts/variables';
 
 // Reset
 @import 'Base/reset';

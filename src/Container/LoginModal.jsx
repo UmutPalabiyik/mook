@@ -36,7 +36,7 @@ const LoginModal = ({ showModal, toggleModalShow }) => {
         <div className="login-modal__left">
           <div className="login-modal__header">
             <AiOutlineCloseCircle
-              className="login-modal__icon"
+              className="login-modal__icon login-modal__close"
               onClick={closeModal}
             />
             <div className="login-modal__icon-container" onClick={toggleCover}>
@@ -62,7 +62,7 @@ const LoginModal = ({ showModal, toggleModalShow }) => {
               <span className="login-modal__icon-text">Register</span>
             </div>
             <AiOutlineCloseCircle
-              className="login-modal__icon"
+              className="login-modal__icon login-modal__close"
               onClick={closeModal}
             />
           </div>
