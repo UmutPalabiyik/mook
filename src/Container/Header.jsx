@@ -14,7 +14,7 @@ const Header = ({ toggleModalShow }) => {
   }
 
   return (
-    <header className="header">
+    <header className={"header"}>
       <p className="header__logo">mook</p>
       <ul className={`header__list ${showList ? "header__list--responsive" : ""}`}>
         <li className="header__item">

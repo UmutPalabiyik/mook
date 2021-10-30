@@ -4,14 +4,12 @@
 .header {
   height: 72px;
   width: 100%;
-  position: fixed;
   top: 0;
   left: 0;
   background-color: $header-background;
   padding: 0 5rem;
   font-family: "Roboto", sans-serif;
   position: relative;
-  z-index: 1000;
 
   @include flexbox($justify-content: space-between, $align-items: center);
 
@@ -58,42 +56,63 @@
     display: none;
   }
 
-
-
   @media screen and (max-width: $medium) {
     & {
       padding: 0 2rem;
     }
 
-    &__logo{
-        font-size: 2rem;
+    &__logo {
+      font-size: 2rem;
     }
   }
 
   @media screen and (max-width: $small) {
     &__hamburger {
-      display: flex;
+      display: block;
       color: $white;
     }
 
-    &__list{
-        width: 100%;
-        height: calc(100vh - 72px);
-        position: absolute;
-        top: 72px;
-        left: 0;
-        background-color: rgba(119, 102, 187, 0.5);
-        @include flexbox($direction: column, $justify-content: flex-start, $align-items: center);
-        
-        li{
-            margin-top: 1.5rem;
-        }
-
-        &--responsive{
-            display: none;
-        }
-
+    &__list {
+      position: absolute;
+      top: 72px;
+      right: 0;
+      width: 100%;
+      height: calc(100vh - 72px);
+      background-color: $header-background;
+      border-top: .5px solid $white ;
+      @include flexbox(
+        $direction: column,
+        $justify-content: flex-start,
+        $align-items: center
+      );
+      transition: transform 0.3s ease-in;
+      transform: translateX(100%);
+      
+      &--responsive {
+        transform: translateX(0%);
       }
+    }
 
+    &__item{
+      margin: 3rem 0 0 0;
+      @for $i from 1 through 3 {
+        &:nth-of-type(#{$i}) {
+          $step: $i/1.5;
+          animation: navlinkFade $step + s ease;
+        }
+      }
+    }
+
+    @keyframes navlinkFade {
+      0% {
+        opacity: 0;
+        transform: translateX(300px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
   }
 }
+
