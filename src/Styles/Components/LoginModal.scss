@@ -47,7 +47,7 @@
 
     &__close{
         &:hover{
-            
+            animation: spin 2s linear infinite;
         }
     }
 
@@ -81,7 +81,6 @@
         background-color: #fff;
         display: flex;
         animation: slideUp .5s ease;
-
         position: relative;
 
     }
@@ -175,5 +174,11 @@
           transform: translateY(0);
         }
       }
+
+    @keyframes spin {
+          100% {
+            transform: rotate(360deg);
+          }
+    }
 
 }

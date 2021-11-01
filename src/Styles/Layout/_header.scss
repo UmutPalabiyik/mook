@@ -50,9 +50,7 @@
     color: #f19066;
   }
 
-  &__hamburger {
-    width: 32px;
-    height: 32px;
+  &__burger {
     display: none;
   }
 
@@ -67,9 +65,27 @@
   }
 
   @media screen and (max-width: $small) {
-    &__hamburger {
+    &__burger {
       display: block;
-      color: $white;
+      &-line{
+        background: $white;
+        width: 25px;
+        height: 3px;
+        margin: 5px;
+        transition: all .3s ease;
+      }
+
+      &-line--animation &-line--1{
+        transform: rotate(-45deg) translate(-5px, 6px);
+      }
+
+      &-line--animation &-line--2{
+        opacity: 0;
+      }
+      
+      &-line--animation &-line--3{
+        transform: rotate(45deg) translate(-5px, -6px);
+      }
     }
 
     &__list {
@@ -95,12 +111,15 @@
 
     &__item{
       margin: 3rem 0 0 0;
-      @for $i from 1 through 3 {
-        &:nth-of-type(#{$i}) {
-          $step: $i/1.5;
-          animation: navlinkFade $step + s ease;
+      &--animation{
+        @for $i from 1 through 3 {
+          &:nth-of-type(#{$i}) {
+            $step: $i/2.5;
+            animation: navlinkFade $step + s ease;
+          }
         }
       }
+
     }
 
     @keyframes navlinkFade {
