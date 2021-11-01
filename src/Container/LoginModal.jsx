@@ -25,11 +25,11 @@ const LoginModal = ({ showModal, toggleModalShow }) => {
   return (
     <div className={`login-modal ${showModal ? "login-modal--show" : ""}`}>
       <div className="login-modal__container">
-        <img
+        <div
           className={`login-modal__cover ${
             cover ? "login-modal__cover--left" : "login-modal__cover--right"
           }`}
-          src={cover ? miniKratosBg : miniValhallaBg}
+          style={{backgroundImage: `url(${cover ? miniKratosBg : miniValhallaBg})`}}
           onClick={toggleCover}
           alt="modal-cover"
         />

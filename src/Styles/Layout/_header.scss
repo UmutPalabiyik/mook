@@ -48,6 +48,7 @@
 
   &__login {
     color: #f19066;
+    white-space: nowrap;
   }
 
   &__burger {
@@ -57,6 +58,12 @@
   @media screen and (max-width: $medium) {
     & {
       padding: 0 2rem;
+
+      &__item{
+        width: 100%;
+        @include flexbox($justify-content: center, $align-items: flex-start);
+      
+      }
     }
 
     &__logo {
