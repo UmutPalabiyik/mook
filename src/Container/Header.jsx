@@ -31,6 +31,11 @@ const Header = ({ toggleModalShow }) => {
           </a>
         </li>
         <li className={`header__item  ${burgerListItemAnimation}`}>
+          <a className="header__link" href="/">
+            <span className="header__text">Help</span>
+          </a>
+        </li>
+        <li className={`header__item  ${burgerListItemAnimation}`}>
           <span className="header__text header__login" onClick={showModal}>
             Join the team
           </span>
