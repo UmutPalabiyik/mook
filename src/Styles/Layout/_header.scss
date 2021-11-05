@@ -53,6 +53,7 @@
 
   &__burger {
     display: none;
+
   }
 
   @media screen and (max-width: $medium) {
@@ -74,24 +75,41 @@
   @media screen and (max-width: $small) {
     &__burger {
       display: block;
+      width: 30px;
       &-line{
         background: $white;
-        width: 25px;
-        height: 3px;
-        margin: 5px;
+        height: 4px;
+        margin: .4rem 0;
+        border-radius: 10px;
         transition: all .3s ease;
       }
 
+      &-line--1{
+        width: 50%;
+      }
+  
+      &-line--2{
+        width: 100%;
+      }
+  
+      &-line--3{
+        width: 75%;
+      }
+
       &-line--animation &-line--1{
-        transform: rotate(-45deg) translate(-5px, 6px);
+        transform-origin:bottom;
+        transform:rotatez(45deg) translate(5px,0px)
       }
 
       &-line--animation &-line--2{
-        opacity: 0;
+        transform-origin:top;
+        transform:rotatez(-45deg)
       }
       
       &-line--animation &-line--3{
-        transform: rotate(45deg) translate(-5px, -6px);
+        transform-origin:bottom;
+        width:50%;
+        transform: translate(14px,-5.5px) rotatez(45deg);
       }
     }
 
