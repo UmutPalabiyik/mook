@@ -68,9 +68,10 @@
     }
 
     &__logo {
-      font-size: 2rem;
+      font-size: 2.5rem;
     }
   }
+  
 
   @media screen and (max-width: $small) {
     &__burger {
@@ -81,7 +82,7 @@
         height: 4px;
         margin: .4rem 0;
         border-radius: 10px;
-        transition: all .3s ease;
+        transition: all .5s ease;
       }
 
       &-line--1{
