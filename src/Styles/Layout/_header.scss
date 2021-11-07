@@ -139,9 +139,10 @@
       margin: 3rem 0 0 0;
       &--animation{
         $itemCount: 4;
+        $animationSpeed: 3.5;
         @for $i from 1 through $itemCount {
           &:nth-of-type(#{$i}) {
-            $step: $i/2.5;
+            $step: $i/$animationSpeed;
             animation: navlinkFade $step + s ease;
           }
         }
