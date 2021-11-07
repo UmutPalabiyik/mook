@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import LoginModal from './LoginModal';
 import { codBg } from '../Utils/Helpers/Backgrounds.helpers';
-import Header from './Header';
+import Header from '../Components/Header';
 
 
 const Home = () => {

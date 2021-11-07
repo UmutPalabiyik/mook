@@ -6,11 +6,11 @@ import "./Styles/main.scss";
 const App = () => {
 
   return(
-      <div className="app">
+      <main className="app">
         <Home />
         
 
-      </div>
+      </main>
   )
 }
 
