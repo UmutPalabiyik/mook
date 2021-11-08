@@ -209,7 +209,7 @@
             height: 50%;
             padding: 1.5rem;
             border-radius: 0;
-            box-shadow: 0 12px 5px 0px rgba(0,0,0,0.50);
+            box-shadow: 0px -10px 5px 0px rgba(0, 0, 0, .50) inset;
         }
 
         &__right{
@@ -217,6 +217,8 @@
             height: 50%;
             padding: 1.5rem;
             border-radius: 0;
+            box-shadow: 0px 10px 5px 0px rgba(0, 0, 0, .50) inset;
+
         }
 
         &__cover--left{
@@ -227,7 +229,6 @@
             transform: translateY(100%);
             left: 0;
             border-radius: 0;
-            box-shadow: 0px 15px 5px 0px rgba(0,0,0,0.50) inset;
            
         }
 
