@@ -37,11 +37,11 @@
         }
 
         &--register{
-            color: #20AFB8;
+            color: $login-color;
         }
 
         &--login{
-            color: #BA5922;
+            color: $register-color;
         }
 
     }
@@ -133,7 +133,7 @@
     &__left{
         width: 50%;
         height: 100%;
-        background-color: #20AFB8;
+        background-color: $login-color;
         border-top-left-radius: 3rem;
         border-bottom-left-radius: 3rem;
         padding: 1.5rem;
@@ -157,7 +157,7 @@
     &__right{
         width: 50%;
         height: 100%;
-        background-color: #BA5922;
+        background-color: $register-color;
         border-top-right-radius: 3rem;
         border-bottom-right-radius: 3rem;
         padding: 1.5rem;
