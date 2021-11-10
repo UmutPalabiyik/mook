@@ -11,7 +11,10 @@ ol, ul{
     list-style-type: none;
 }
 
-a{
+a, button{
     text-decoration: none;
+    cursor: pointer;
 }
+
+
 

@@ -29,7 +29,7 @@ const Header = ({ toggleModalShow, showModal }) => {
         </li>
         <li className={`header__item  ${burgerListItemAnimation}`}>
           <a className="header__link" href="/">
-            <span className="header__text">Contact</span>
+            <span className="header__text">Services</span>
           </a>
         </li>
         <li className={`header__item  ${burgerListItemAnimation}`}>

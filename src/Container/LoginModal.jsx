@@ -5,7 +5,7 @@ import { TiArrowRightThick, TiArrowLeftThick } from "react-icons/ti";
 import {
   miniKratosBg,
   miniValhallaBg,
-} from "../Utils/Helpers/Backgrounds.helpers";
+} from "../Utils/Helpers/Images.helpers";
 
 const LoginModal = ({ showModal, toggleModalShow }) => {
   const [cover, setCover] = useState(true);
