@@ -1,0 +1,41 @@
+.home{
+
+    $home-title-color: #EE5A24;
+
+    min-height: 100vh;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+
+    &__container{
+        row-gap: 2rem;
+    }
+
+
+    &__img{
+        width: 300px;
+        justify-self: center;
+        transform: scaleX(-1);
+    }
+
+
+    &__title{
+        color: $home-title-color;
+        font-size: $biggest-font-size;
+        letter-spacing: 1px;
+        margin-bottom: .75rem;
+    }
+
+    &__description{
+        color: $white;
+        font-size: $normal-font-size;
+    }
+
+
+}
+
+.section{
+    padding: 6rem 0 2rem;
+}

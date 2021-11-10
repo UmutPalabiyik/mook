@@ -5,8 +5,20 @@ $x-large: 1199px;
 $xx-large: 1400px;
 
 
-//colors
+// Colors
 $white: #ffff;
-$header-background: rgba(122, 95, 232, 0.5);
+$header-background: #1e272e;
+$background-color: #1e272e;
 $register-color: #BA5922;
-$login-color: #20AFB8;
+$login-color: #00b894;
+
+// Typography
+$biggest-font-size: 2rem;
+$h2-font-size: 1.25rem;
+$h3-font-size: 1.125rem;
+$normal-font-size: .938rem;
+$small-font-size: .813rem;
+$smaller-font-size: .75rem;
+
+$font-semi-bold: 600;
+$font-bold: 700;
