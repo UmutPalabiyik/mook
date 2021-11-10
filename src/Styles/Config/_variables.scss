@@ -1,8 +1,9 @@
-$small: 575px;
-$medium: 767px;
-$large: 991px;
-$x-large: 1199px;
-$xx-large: 1400px;
+// Screens
+$small-screen: 576px;
+$medium-screen: 767px;
+$large-screen: 968px;
+$x-large-screen: 1200px;
+$xx-large-screen: 1400px;
 
 
 // Colors
@@ -11,8 +12,10 @@ $header-background: #1e272e;
 $background-color: #1e272e;
 $register-color: #BA5922;
 $login-color: #00b894;
+$home-color: #EE5A24;
 
 // Typography
+$mega-font-size: 4rem;
 $biggest-font-size: 2rem;
 $h2-font-size: 1.25rem;
 $h3-font-size: 1.125rem;

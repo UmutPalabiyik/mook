@@ -1,28 +1,24 @@
 .home{
-
-    $home-title-color: #EE5A24;
-
     min-height: 100vh;
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
     position: relative;
+    font-family: 'Poppins', sans-serif;
 
     &__container{
-        row-gap: 2rem;
+        row-gap: 1rem;
     }
 
+    &__data{
+    }
 
     &__img{
-        width: 300px;
+        width: 275px;
         justify-self: center;
         transform: scaleX(-1);
     }
 
 
     &__title{
-        color: $home-title-color;
+        color: $home-color;
         font-size: $biggest-font-size;
         letter-spacing: 1px;
         margin-bottom: .75rem;
@@ -30,12 +26,30 @@
 
     &__description{
         color: $white;
-        font-size: $normal-font-size;
+        font-size: $small-font-size;
+        line-height: 1.5rem;
+        margin-bottom: .75rem;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    &__button{
+        display: inline-block;
+        padding: .75rem 1.5rem;
+        border-radius: 3rem;
+        color: $white;
+        background-color: $home-color;
+        font-weight: $font-semi-bold;
+        letter-spacing: 2px;
+        transition: .5s transform;
+
+        &:hover{
+            transform: translateY(-.5rem);
+        }
     }
 
 
 }
 
 .section{
-    padding: 6rem 0 2rem;
+    padding: 5.5rem 0 2rem;
 }

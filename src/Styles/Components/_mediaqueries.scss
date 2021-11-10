@@ -1,0 +1,67 @@
+@media screen and (max-width: 360px){
+    .section__img{
+        width: 100%;
+    }
+}
+
+
+@media screen and (min-width: $small-screen){
+
+    .section{
+        padding: 7.5rem 0 2rem;
+    }
+
+    .section__img{
+        width: 100%;
+        order: 1;
+    }
+
+    .container{
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+    }
+
+}
+
+
+
+@media screen and (min-width: $medium-screen){
+
+    .section{
+        padding: 9.5rem 0 2rem;
+    }
+
+}
+
+@media screen and (min-width: $large-screen){
+
+    .section{
+        padding: 11rem 0 2rem;
+    }
+
+    .home{
+
+        &__title{
+            font-size: $mega-font-size;
+            margin-bottom: 1.5rem;
+        }
+
+        &__description{
+            font-size: $normal-font-size;
+            margin-bottom: 1.5rem;
+            line-height: 1.5rem;
+        }
+
+    }
+
+}
+
+@media screen and (min-width: $x-large-screen){
+    .container{
+        margin: 0 auto;
+    }
+
+    .grid{
+        gap: 2rem;
+    }
+}

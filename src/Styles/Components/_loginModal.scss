@@ -74,6 +74,7 @@
     }
 
     &__container{
+        max-width: 95%;
         width: 900px;
         height: 400px;
         border-radius: 10rem;
@@ -185,7 +186,7 @@
           }
     }
 
-    @media screen and (max-width: $medium){
+    @media screen and (max-width: $medium-screen){
 
         z-index: 101;
 
@@ -246,7 +247,7 @@
 
     }
 
-    @media screen and (max-width: $small){
+    @media screen and (max-width: $small-screen){
         &__header{
             margin-bottom: .3rem;
         }
