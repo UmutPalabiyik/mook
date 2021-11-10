@@ -1,10 +1,13 @@
 // Layout
 @import 'Layout/header';
-@import 'Layout/home';
 @import 'Layout/layout';
 
 // Container
-@import 'Components/LoginModal.scss';
+@import 'Container/home';
+
+
+// Components
+@import 'Components/loginModal';
 
 // Abstracts
 @import 'Abstracts/mixins';

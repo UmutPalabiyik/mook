@@ -12,9 +12,9 @@ const App = () => {
 
   return (
     <div className="app">
-      <Header toggleModalShow={toggleModalShow} />
+      <Header toggleModalShow={toggleModalShow} showModal={showModal}/>
       <main className="main">
-        <Home toggleModalShow={toggleModalShow} showModal={showModal} />
+        <Home />
       </main>
     </div>
   );

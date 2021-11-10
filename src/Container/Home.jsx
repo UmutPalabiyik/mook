@@ -1,16 +1,11 @@
-import LoginModal from './LoginModal';
-import { codBg } from '../Utils/Helpers/Backgrounds.helpers';
+import { codBg } from "../Utils/Helpers/Backgrounds.helpers";
 
+const Home = () => {
+  return (
+    <section className="home" style={{ backgroundImage: `url(${codBg})` }}>
 
-const Home = ({toggleModalShow, showModal }) => {
-
-
-    return(
-        <div className="home" style={{backgroundImage: `url(${codBg})`}}>
-
-            <LoginModal toggleModalShow={toggleModalShow} showModal={showModal}/>
-        </div>
-    )
-}
+    </section>
+  );
+};
 
 export default Home;

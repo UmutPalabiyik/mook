@@ -1,11 +1,12 @@
 import { useState } from 'react';
+import LoginModal from '../Container/LoginModal';
 
-const Header = ({ toggleModalShow }) => {
+const Header = ({ toggleModalShow, showModal }) => {
 
   const [burgerAnimation, setBurgerAnimation] = useState(false)
 
   // for showing login/sign up modal
-  const showModal = () => {
+  const showModalButton = () => {
     toggleModalShow();
   };
 
@@ -18,6 +19,7 @@ const Header = ({ toggleModalShow }) => {
 
   return (
     <header className={"header"}>
+      <LoginModal toggleModalShow={toggleModalShow} showModal={showModal}/>
       <p className="header__logo">mook</p>
       <ul className={`header__list ${burgerAnimation ? "header__list--responsive" : ""}`}>
         <li className={`header__item  ${burgerListItemAnimation}`}>
@@ -36,7 +38,7 @@ const Header = ({ toggleModalShow }) => {
           </a>
         </li>
         <li className={`header__item  ${burgerListItemAnimation}`}>
-          <span className="header__text header__login" onClick={showModal}>
+          <span className="header__text header__login" onClick={showModalButton}>
             Join the team
           </span>
         </li>
