@@ -3,6 +3,10 @@
 .section{
     padding: 4.5rem 0 1rem;
     font-family: 'Poppins', sans-serif;
+
+    .section__img {
+        width: 100%;
+      }
 }
 
 .container{
@@ -18,3 +22,8 @@
 .main{
     overflow: hidden;
 }
+
+.order{
+    order: 1;
+}
+

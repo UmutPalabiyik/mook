@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.scss";
 import Header from "./Components/Header";
+import About from "./Container/About";
 import Home from "./Container/Home";
 import "./Styles/main.scss";
 
@@ -15,6 +16,7 @@ const App = () => {
       <Header toggleModalShow={toggleModalShow} showModal={showModal}/>
       <main className="main">
         <Home />
+        <About />
       </main>
     </div>
   );
