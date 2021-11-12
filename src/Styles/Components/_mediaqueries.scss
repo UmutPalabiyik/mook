@@ -1,12 +1,18 @@
+// X-Small Devices
 @media screen and (max-width: $small-screen) {
     .home{
         &__container{
             row-gap: 5rem;
         }
+
+        &__description {
+          font-size: $small-font-size;
+        }
     }
 }
 
 
+// Small Devices
 @media screen and (min-width: $small-screen) {
   .section {
     padding: 7.5rem 0 2rem;
@@ -33,12 +39,14 @@
 
 }
 
+// Medium Devices
 @media screen and (min-width: $medium-screen) {
   .section {
     padding: 9.5rem 0 2rem;
   }
 }
 
+// Large Devices
 @media screen and (min-width: $large-screen) {
   .home {
     &__title {
@@ -49,7 +57,6 @@
 
 
     &__description {
-      font-size: $normal-font-size;
       margin-bottom: 1.5rem;
       line-height: 1.5rem;
     }
@@ -60,6 +67,8 @@
   }
 }
 
+
+// X-Large Devices
 @media screen and (min-width: $x-large-screen) {
   .container {
     margin: 0 auto;

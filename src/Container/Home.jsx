@@ -38,6 +38,12 @@ const Home = () => {
               play with together here. You can find friends to play with
               together here. Wolves don't travel alone. Join a team. Enjoy more.
             </p>
+            <p className="home__description">
+              You can find friends to play with together here. Wolves don't
+              travel alone. Join a team. Enjoy more. You can find friends to
+              play with together here. You can find friends to play with
+              together here. Wolves don't travel alone. Join a team. Enjoy more.
+            </p>
           </div>
         </div>
         

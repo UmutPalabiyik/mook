@@ -24,17 +24,17 @@ const Header = ({ toggleModalShow, showModal }) => {
       <ul className={`header__list ${burgerAnimation ? "header__list--responsive" : ""}`}>
         <li className={`header__item  ${burgerListItemAnimation}`}>
           <a className="header__link" href="/">
+            <span className="header__text">Home</span>
+          </a>
+        </li>
+        <li className={`header__item  ${burgerListItemAnimation}`}>
+          <a className="header__link" href="/">
             <span className="header__text">About</span>
           </a>
         </li>
         <li className={`header__item  ${burgerListItemAnimation}`}>
           <a className="header__link" href="/">
             <span className="header__text">Services</span>
-          </a>
-        </li>
-        <li className={`header__item  ${burgerListItemAnimation}`}>
-          <a className="header__link" href="/">
-            <span className="header__text">Help</span>
           </a>
         </li>
         <li className={`header__item  ${burgerListItemAnimation}`}>
