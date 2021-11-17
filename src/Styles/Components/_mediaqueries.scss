@@ -34,6 +34,7 @@
             order: 1;
         }
     }
+
   }
 
 
@@ -42,7 +43,7 @@
 // Medium Devices
 @media screen and (min-width: $medium-screen) {
   .section {
-    padding: 9.5rem 0 2rem;
+    padding: 6.5rem 0 2rem;
   }
 }
 
@@ -53,8 +54,6 @@
       font-size: $mega-font-size;
       margin-bottom: 1.5rem;
     }
-
-
 
     &__description {
       margin-bottom: 1.5rem;

@@ -3,6 +3,7 @@ import { star_wars_jedi_fallen_order, gta_5 } from "../Utils/Helpers/Images.help
 const Home = () => {
   return (
     <section className="home section">
+
       <div className="home__container grid">
         <div className="home__row container grid">
           <img
@@ -47,7 +48,6 @@ const Home = () => {
           </div>
         </div>
         
-
 
       </div>
     </section>
