@@ -4,8 +4,8 @@ const Home = () => {
   return (
     <section className="home section">
 
-      <div className="home__container grid">
-        <div className="home__row container grid">
+      <div className="home__container grid container">
+        <div className="home__row grid">
           <img
             className="home__img section__img home__img--order home__img--flip"
             src={star_wars_jedi_fallen_order}
@@ -25,7 +25,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="home__row container grid">
+        <div className="home__row grid">
           <img
             className="home__img section__img"
             src={gta_5}

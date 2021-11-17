@@ -1,16 +1,15 @@
 // X-Small Devices
 @media screen and (max-width: $small-screen) {
-    .home{
-        &__container{
-            row-gap: 5rem;
-        }
-
-        &__description {
-          font-size: $small-font-size;
-        }
+  .home {
+    &__container {
+      row-gap: 5rem;
     }
-}
 
+    &__description {
+      font-size: $small-font-size;
+    }
+  }
+}
 
 // Small Devices
 @media screen and (min-width: $small-screen) {
@@ -19,25 +18,21 @@
 
     &__img {
       width: 100%;
-
     }
   }
 
-  .container {
-    grid-template-columns: repeat(2, 1fr);
-    align-items: center;
-  }
-
-  .home{
-    &__img{
-        &--order{
-            order: 1;
-        }
+  .home {
+    &__img {
+      &--order {
+        order: 1;
+      }
     }
 
+    &__row {
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+    }
   }
-
-
 }
 
 // Medium Devices
@@ -60,12 +55,11 @@
       line-height: 1.5rem;
     }
 
-    &__container{
-        row-gap: 3rem;
+    &__container {
+      row-gap: 3rem;
     }
   }
 }
-
 
 // X-Large Devices
 @media screen and (min-width: $x-large-screen) {
