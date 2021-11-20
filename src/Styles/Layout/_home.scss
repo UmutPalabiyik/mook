@@ -17,7 +17,7 @@
 
 
     &__title{
-        color: $home-color;
+        color: $title-color;
         font-size: $biggest-font-size;
         letter-spacing: 1px;
         margin-bottom: .75rem;
@@ -36,7 +36,7 @@
         padding: .75rem 1.5rem;
         border-radius: 3rem;
         color: $white;
-        background-color: $home-color;
+        background-color: $title-color;
         font-weight: $font-semi-bold;
         letter-spacing: 1.5px;
         transition: .5s transform;

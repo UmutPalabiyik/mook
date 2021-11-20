@@ -12,7 +12,7 @@ const Home = () => {
             alt=""
           />
           <div className="home__data">
-            <h1 className="home__title">Don't play alone</h1>
+            <h2 className="home__title">Don't play alone</h2>
             <p className="home__description">
               You can find friends to play with together here. Wolves don't
               travel alone. Join a team. Enjoy more. You can find friends to
@@ -32,7 +32,7 @@ const Home = () => {
             alt=""
           />
           <div className="home__data">
-            <h1 className="home__title">Need a team ?</h1>
+            <h2 className="home__title">Need a team ?</h2>
             <p className="home__description">
               You can find friends to play with together here. Wolves don't
               travel alone. Join a team. Enjoy more. You can find friends to

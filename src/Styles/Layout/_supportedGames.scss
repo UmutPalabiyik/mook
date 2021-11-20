@@ -1,0 +1,10 @@
+.supported-games{
+    &__title{
+        font-size: $biggest-font-size;
+        color: $title-color;
+    }
+
+    &__container{
+        padding: 2rem 0 1rem;
+    }
+}
