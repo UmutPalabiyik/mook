@@ -7,9 +7,9 @@ const SupportedGames = () => {
       <div className="supported-games__container container">
         <h2 className="supported-games__title">Supported Games</h2>
         <div className="supported-games__games">
-{/*           {supportedGames.map((gameCard) => {
-            return <SupportedGameCard gameCard={gameCard} />;
-          })} */}
+          {supportedGames.map((gameCard) => {
+            return <SupportedGameCard gameCard={gameCard} key={gameCard.id} />;
+          })}
         </div>
       </div>
     </section>

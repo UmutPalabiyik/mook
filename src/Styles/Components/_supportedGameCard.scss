@@ -1,0 +1,30 @@
+.supported-game-card{
+
+    background-color: #2e383f;
+    border-radius: 1rem;
+    
+    &__container{
+        width: 250px;
+        height: 60px;
+        @include flexbox();
+        column-gap: .5rem;
+    }
+
+    &__name{
+        color: $white;
+        font-weight: $font-semi-bold;
+        letter-spacing: .75px;
+    }
+}
+
+
+
+
+@media screen and (min-width: $medium-screen){
+    .supported-game-card {
+        &__container{
+            margin: 0 auto;
+            justify-content: flex-start;
+        }
+    }
+}
