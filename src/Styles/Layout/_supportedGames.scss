@@ -13,18 +13,28 @@
     grid-template-columns: repeat(6, 1fr);
     column-gap: 0.5rem;
     overflow-x: scroll;
-    padding-top: 1.5rem;
+    margin-top: 1.5rem;
     &::-webkit-scrollbar {
       display: none;
     }
   }
 }
 
+@media screen and (max-width: $small-screen){
+    .supported-games {
+        &__games{
+            grid-template-columns: repeat(8, 1fr);
+            display: grid;
+        }
+    }
+}
+
 
 @media screen and (min-width: $small-screen){
     .supported-games {
         &__games{
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(4, 1fr);
+            column-gap: .75rem;
             row-gap: .75rem;
         }
     }
@@ -42,4 +52,5 @@
             font-size: $mega-font-size;
         }
     }
+
 }
