@@ -2,18 +2,24 @@
 
     background-color: #2e383f;
     border-radius: 1rem;
+    transition: .5s all;
     
     &__container{
         width: 250px;
         height: 60px;
         @include flexbox();
-        column-gap: .5rem;
+        column-gap: 1rem;
     }
 
     &__name{
         color: $white;
         font-weight: $font-semi-bold;
         letter-spacing: .75px;
+    }
+
+    &:hover{
+        transform: scale(1.02);
+        background-color: #2e383fe0;
     }
 }
 

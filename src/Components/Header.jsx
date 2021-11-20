@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import LoginModal from '../Container/LoginModal';
+import { NavLink } from 'react-router-dom';
 
 const Header = ({ toggleModalShow, showModal }) => {
 
@@ -23,24 +24,24 @@ const Header = ({ toggleModalShow, showModal }) => {
       <p className="header__logo">mook</p>
       <ul className={`header__list ${burgerAnimation ? "header__list--responsive" : ""}`}>
         <li className={`header__item  ${burgerListItemAnimation}`}>
-          <a className="header__link" href="/">
+          <NavLink exact className="header__link" to="/">
             <span className="header__text">Home</span>
-          </a>
+          </NavLink>
         </li>
         <li className={`header__item  ${burgerListItemAnimation}`}>
-          <a className="header__link" href="/">
-            <span className="header__text">About</span>
-          </a>
+          <NavLink className="header__link" to="/" >
+            <span className="header__text">Games</span>
+          </NavLink>
         </li>
         <li className={`header__item  ${burgerListItemAnimation}`}>
-          <a className="header__link" href="/">
+          <NavLink className="header__link" to="/" >
             <span className="header__text">Services</span>
-          </a>
+          </NavLink>
         </li>
         <li className={`header__item  ${burgerListItemAnimation}`}>
-          <span className="header__text header__login" onClick={showModalButton}>
+          <NavLink className="header__text header__login" onClick={showModalButton} to="/" >
             Join the team
-          </span>
+          </NavLink>
         </li>
       </ul>
       <div className={`header__burger ${burgerIconAnimation}`} onClick={handleBurgerAnimation}>

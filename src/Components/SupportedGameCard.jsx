@@ -1,11 +1,13 @@
+import { NavLink } from "react-router-dom";
+
 const SupportedGameCard = ({ gameCard }) => {
   return (
-    <div className="supported-game-card">
+    <NavLink className="supported-game-card" to="/">
       <div className="supported-game-card__container">
         {gameCard.cardSvg}
         <span className="supported-game-card__name">{gameCard.name}</span>
       </div>
-    </div>
+    </NavLink>
   );
 };
 

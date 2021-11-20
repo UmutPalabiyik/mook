@@ -34,8 +34,8 @@
     .supported-games {
         &__games{
             grid-template-columns: repeat(4, 1fr);
-            column-gap: .75rem;
-            row-gap: .75rem;
+            column-gap: 1rem;
+            row-gap: 1rem;
         }
     }
 
