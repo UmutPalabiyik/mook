@@ -7,6 +7,8 @@ import {
   miniValhallaBg,
 } from "../Utils/Helpers/Images.helpers";
 
+import LoginModelInput from "../Components/LoginModalInput";
+
 const LoginModal = ({ showModal, toggleModalShow }) => {
   const [cover, setCover] = useState(true);
 
@@ -18,9 +20,6 @@ const LoginModal = ({ showModal, toggleModalShow }) => {
     toggleModalShow();
   };
 
-  const LoginModelInput = ({ placeholder }) => {
-    return <input placeholder={placeholder} className="login-modal__input" />;
-  };
 
   return (
     <div className={`login-modal ${showModal ? "login-modal--show" : ""}`}>
@@ -46,9 +45,9 @@ const LoginModal = ({ showModal, toggleModalShow }) => {
           </div>
 
           <form className="login-modal__form" action="">
-            <LoginModelInput placeholder="E-mail" />
-            <LoginModelInput placeholder="Password" />
-            <LoginModelInput placeholder="Re-Password" />
+            <LoginModelInput placeholder="E-mail" type={"email"} isRequired={true} className="login-modal__input"/>
+            <LoginModelInput placeholder="Password" type={"password"} isRequired={true} className="login-modal__input"/>
+            <LoginModelInput placeholder="Re-Password" type={"password"} isRequired={true} className="login-modal__input"/>
             <button className="login-modal__form-button login-modal__form-button--register">
               REGISTER
             </button>
@@ -68,8 +67,8 @@ const LoginModal = ({ showModal, toggleModalShow }) => {
           </div>
 
           <form className="login-modal__form" action="">
-            <LoginModelInput placeholder="E-mail" />
-            <LoginModelInput placeholder="Password" />
+            <LoginModelInput placeholder="E-mail" type={"email"} isRequired={true} className="login-modal__input"/>
+            <LoginModelInput placeholder="Password" type={"password"} isRequired={true} className="login-modal__input"/>
             <span className="login-modal__form-forget">Forget Password ?</span>
             <button className="login-modal__form-button login-modal__form-button--login">
               LOGIN
