@@ -24,7 +24,7 @@ const Header = ({ toggleModalShow, showModal }) => {
       <p className="header__logo">mook</p>
       <ul className={`header__list ${burgerAnimation ? "header__list--responsive" : ""}`}>
         <li className={`header__item  ${burgerListItemAnimation}`}>
-          <NavLink exact className="header__link" to="/">
+          <NavLink className="header__link" to="/">
             <span className="header__text">Home</span>
           </NavLink>
         </li>

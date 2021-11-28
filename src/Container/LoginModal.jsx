@@ -1,16 +1,27 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
 
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { TiArrowRightThick, TiArrowLeftThick } from "react-icons/ti";
-import {
-  miniKratosBg,
-  miniValhallaBg,
-} from "../Utils/Helpers/Images.helpers";
+import { miniKratosBg, miniValhallaBg } from "../Utils/Helpers/Images.helpers";
 
 import LoginModelInput from "../Components/LoginModalInput";
+import { userRegister } from "../Features/User/userSlice";
 
 const LoginModal = ({ showModal, toggleModalShow }) => {
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [cover, setCover] = useState(true);
+  const initialRegisterForm = {
+    email: "",
+    password: "",
+    repassword: "",
+  };
+  const [registerForm, setRegisterForm] = useState(initialRegisterForm);
+
 
   const toggleCover = () => {
     setCover(!cover);
@@ -21,6 +32,11 @@ const LoginModal = ({ showModal, toggleModalShow }) => {
   };
 
 
+  const handleRegister = (e) => {
+    e.preventDefault();
+    dispatch(userRegister({registerForm, navigate, dispatch}));
+  }
+
   return (
     <div className={`login-modal ${showModal ? "login-modal--show" : ""}`}>
       <div className="login-modal__container">
@@ -28,7 +44,9 @@ const LoginModal = ({ showModal, toggleModalShow }) => {
           className={`login-modal__cover ${
             cover ? "login-modal__cover--left" : "login-modal__cover--right"
           }`}
-          style={{backgroundImage: `url(${cover ? miniKratosBg : miniValhallaBg})`}}
+          style={{
+            backgroundImage: `url(${cover ? miniKratosBg : miniValhallaBg})`,
+          }}
           onClick={toggleCover}
           alt="modal-cover"
         />
@@ -44,10 +62,34 @@ const LoginModal = ({ showModal, toggleModalShow }) => {
             </div>
           </div>
 
-          <form className="login-modal__form" action="">
-            <LoginModelInput placeholder="E-mail" type={"email"} isRequired={true} className="login-modal__input"/>
-            <LoginModelInput placeholder="Password" type={"password"} isRequired={true} className="login-modal__input"/>
-            <LoginModelInput placeholder="Re-Password" type={"password"} isRequired={true} className="login-modal__input"/>
+          <form className="login-modal__form" onSubmit={handleRegister}>
+            <LoginModelInput
+              placeholder="E-mail"
+              type="email"
+              isRequired={true}
+              className="login-modal__input"
+              name="email"
+              registerForm={registerForm}
+              setRegisterForm={setRegisterForm}
+            />
+            <LoginModelInput
+              placeholder="Password"
+              type="password"
+              isRequired={true}
+              className="login-modal__input"
+              name="password"
+              registerForm={registerForm}
+              setRegisterForm={setRegisterForm}
+            />
+            <LoginModelInput
+              placeholder="Re-Password"
+              type="password"
+              isRequired={true}
+              className="login-modal__input"
+              name="repassword"
+              registerForm={registerForm}
+              setRegisterForm={setRegisterForm}
+            />
             <button className="login-modal__form-button login-modal__form-button--register">
               REGISTER
             </button>
@@ -67,8 +109,18 @@ const LoginModal = ({ showModal, toggleModalShow }) => {
           </div>
 
           <form className="login-modal__form" action="">
-            <LoginModelInput placeholder="E-mail" type={"email"} isRequired={true} className="login-modal__input"/>
-            <LoginModelInput placeholder="Password" type={"password"} isRequired={true} className="login-modal__input"/>
+            <LoginModelInput
+              placeholder="E-mail"
+              type="email"
+              isRequired={true}
+              className="login-modal__input"
+            />
+            <LoginModelInput
+              placeholder="Password"
+              type="password"
+              isRequired={true}
+              className="login-modal__input"
+            />
             <span className="login-modal__form-forget">Forget Password ?</span>
             <button className="login-modal__form-button login-modal__form-button--login">
               LOGIN
