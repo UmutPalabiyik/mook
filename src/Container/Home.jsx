@@ -1,9 +1,16 @@
-import { star_wars_jedi_fallen_order, gta_5 } from "../Utils/Helpers/Images.helpers";
+import {
+  star_wars_jedi_fallen_order,
+  gta_5,
+} from "../Utils/Helpers/Images.helpers";
 
-const Home = () => {
+const Home = ({ toggleModalShow }) => {
+  // for showing login/sign up modal
+  const showModalButton = () => {
+    toggleModalShow();
+  };
+
   return (
     <section className="home section">
-
       <div className="home__container grid container">
         <div className="home__row grid">
           <img
@@ -19,18 +26,14 @@ const Home = () => {
               play with together here. You can find friends to play with
               together here. Wolves don't travel alone. Join a team. Enjoy more.
             </p>
-            <button className="home__button" href="/">
+            <button className="home__button" onClick={showModalButton}>
               Join the team
             </button>
           </div>
         </div>
 
         <div className="home__row grid">
-          <img
-            className="home__img section__img"
-            src={gta_5}
-            alt=""
-          />
+          <img className="home__img section__img" src={gta_5} alt="" />
           <div className="home__data">
             <h2 className="home__title">Need a team ?</h2>
             <p className="home__description">
@@ -47,8 +50,6 @@ const Home = () => {
             </p>
           </div>
         </div>
-        
-
       </div>
     </section>
   );

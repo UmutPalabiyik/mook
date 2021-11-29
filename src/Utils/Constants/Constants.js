@@ -424,8 +424,8 @@ export const supportedGames = [
           gradientTransform="matrix(1 0 0 -1 0 47.89)"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#4c4c4c" />
-          <stop offset="1" stop-color="#343434" />
+          <stop offset="0" stopColor="#4c4c4c" />
+          <stop offset="1" stopColor="#343434" />
         </linearGradient>
         <path
           fill="url(#5AaKlQpG8sfTCs926deHsa)"
@@ -433,9 +433,9 @@ export const supportedGames = [
         />
         <path
           fill="#fff"
-          fill-rule="evenodd"
+          fillRule="evenodd"
           d="M6,11.323V11c0-0.552,0.448-1,1-1h18c0.552,0,1,0.448,1,1v0.219 c0,0.459-0.312,0.859-0.757,0.97l-0.824,0.206c-1.241,0.31-1.876,1.69-1.304,2.835l4.345,8.69c0.199,0.398,0.781,0.357,0.922-0.065 l2.846-8.539c0.426-1.279-0.265-2.662-1.544-3.088l0,0C29.275,12.092,29,11.71,29,11.279V11c0-0.552,0.448-1,1-1h11.061 C41.579,10,42,10.421,42,10.939v0.384c0,0.404-0.259,0.763-0.642,0.891l0,0c-1.51,0.503-2.758,1.586-3.469,3.009L27.267,38.416 C27.104,38.772,26.749,39,26.358,39h-2.729c-0.385,0-0.735-0.221-0.902-0.567l-9.874-20.571c-1.192-2.484-3.273-4.43-5.831-5.453 l-0.394-0.158C6.249,12.1,6,11.732,6,11.323z"
-          clip-rule="evenodd"
+          clipRule="evenodd"
         />
         <linearGradient
           id="5AaKlQpG8sfTCs926deHsb"
@@ -446,13 +446,13 @@ export const supportedGames = [
           gradientTransform="matrix(1 0 0 -1 0 47.89)"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#4caf50" />
-          <stop offset=".133" stop-color="#4aae50" />
-          <stop offset=".239" stop-color="#43a94e" />
-          <stop offset=".373" stop-color="#38a14c" />
-          <stop offset=".482" stop-color="#279648" />
-          <stop offset=".621" stop-color="#184" />
-          <stop offset="1" stop-color="#088242" />
+          <stop offset="0" stopColor="#4caf50" />
+          <stop offset=".133" stopColor="#4aae50" />
+          <stop offset=".239" stopColor="#43a94e" />
+          <stop offset=".373" stopColor="#38a14c" />
+          <stop offset=".482" stopColor="#279648" />
+          <stop offset=".621" stopColor="#184" />
+          <stop offset="1" stopColor="#088242" />
         </linearGradient>
         <path
           fill="url(#5AaKlQpG8sfTCs926deHsb)"
