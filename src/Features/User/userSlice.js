@@ -5,14 +5,16 @@ export const userRegister = createAsyncThunk(
   "users/register",
   async (params) => {
     try {
-      const { registerForm, dispatch, navigate } = params;
+      const { registerForm, dispatch, closeModal } = params;
       const { data } = await LoginService.register(registerForm);
       dispatch(handleError(null));
+      closeModal();
 
       return data;
     } catch (error) {
       const { dispatch } = params;
-      dispatch(handleError(error.response.data.message));
+      const errorMessage = error.response.data.message;
+      dispatch(handleError(errorMessage));
     }
   }
 );
@@ -24,7 +26,7 @@ const initialState = {
 };
 
 export const userSlice = createSlice({
-  name: "User",
+  name: "user",
   initialState,
   reducers: {
     handleError: (state, action) => {
@@ -49,3 +51,5 @@ export const userSlice = createSlice({
 
 export default userSlice.reducer;
 export const { handleError } = userSlice.actions;
+export const errorResponse = state => state.user.errorResponse;
+

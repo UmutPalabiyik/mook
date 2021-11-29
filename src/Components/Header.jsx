@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import LoginModal from '../Container/LoginModal';
+import LoginModal from './LoginModal';
 import { NavLink } from 'react-router-dom';
 
 const Header = ({ toggleModalShow, showModal }) => {

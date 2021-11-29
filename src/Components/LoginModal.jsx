@@ -1,18 +1,16 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { TiArrowRightThick, TiArrowLeftThick } from "react-icons/ti";
 import { miniKratosBg, miniValhallaBg } from "../Utils/Helpers/Images.helpers";
 
-import LoginModelInput from "../Components/LoginModalInput";
-import { userRegister } from "../Features/User/userSlice";
+import LoginModelInput from "./LoginModalInput";
+import { errorResponse, handleError, userRegister } from "../Features/User/userSlice";
 
 const LoginModal = ({ showModal, toggleModalShow }) => {
-
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const modalError = useSelector(errorResponse);
 
   const [cover, setCover] = useState(true);
   const initialRegisterForm = {
@@ -22,20 +20,21 @@ const LoginModal = ({ showModal, toggleModalShow }) => {
   };
   const [registerForm, setRegisterForm] = useState(initialRegisterForm);
 
-
   const toggleCover = () => {
     setCover(!cover);
+    dispatch(handleError(null));
   };
 
   const closeModal = () => {
     toggleModalShow();
-  };
+    dispatch(handleError(null));
 
+  };
 
   const handleRegister = (e) => {
     e.preventDefault();
-    dispatch(userRegister({registerForm, navigate, dispatch}));
-  }
+    dispatch(userRegister({ registerForm, closeModal, dispatch }));
+  };
 
   return (
     <div className={`login-modal ${showModal ? "login-modal--show" : ""}`}>
@@ -93,6 +92,7 @@ const LoginModal = ({ showModal, toggleModalShow }) => {
             <button className="login-modal__form-button login-modal__form-button--register">
               REGISTER
             </button>
+            <span className="login-modal__error">{modalError}</span>
           </form>
         </div>
 
