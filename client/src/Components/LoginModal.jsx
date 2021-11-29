@@ -6,7 +6,11 @@ import { TiArrowRightThick, TiArrowLeftThick } from "react-icons/ti";
 import { miniKratosBg, miniValhallaBg } from "../Utils/Helpers/Images.helpers";
 
 import LoginModelInput from "./LoginModalInput";
-import { errorResponse, handleError, userRegister } from "../Features/User/userSlice";
+import {
+  errorResponse,
+  handleError,
+  userRegister,
+} from "../Features/User/userSlice";
 
 const LoginModal = ({ showModal, toggleModalShow }) => {
   const dispatch = useDispatch();
@@ -28,7 +32,6 @@ const LoginModal = ({ showModal, toggleModalShow }) => {
   const closeModal = () => {
     toggleModalShow();
     dispatch(handleError(null));
-
   };
 
   const handleRegister = (e) => {
