@@ -17,6 +17,7 @@ const Home = ({ toggleModalShow }) => {
             className="home__img section__img home__img--order home__img--flip"
             src={star_wars_jedi_fallen_order}
             alt=""
+            loading="lazy"
           />
           <div className="home__data">
             <h2 className="home__title">Don't play alone</h2>
@@ -33,7 +34,12 @@ const Home = ({ toggleModalShow }) => {
         </div>
 
         <div className="home__row grid">
-          <img className="home__img section__img" src={gta_5} alt="" />
+          <img
+            className="home__img section__img"
+            src={gta_5}
+            alt=""
+            loading="lazy"
+          />
           <div className="home__data">
             <h2 className="home__title">Need a team ?</h2>
             <p className="home__description">

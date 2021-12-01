@@ -2,6 +2,7 @@ export const supportedGames = [
   {
     id: 1,
     name: "League of Legends",
+    to: "/games/league_of_legends",
     cardSvg: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -67,6 +68,7 @@ export const supportedGames = [
   {
     id: 2,
     name: "Rocket League",
+    to: "/games/rocket_league",
     cardSvg: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -218,6 +220,7 @@ export const supportedGames = [
   {
     id: 3,
     name: "Dota 2",
+    to: "/games/dota2",
     cardSvg: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -248,6 +251,7 @@ export const supportedGames = [
   {
     id: 4,
     name: "Fortnite",
+    to: "/games/fortnite",
     cardSvg: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -273,6 +277,7 @@ export const supportedGames = [
   {
     id: 5,
     name: "WoW",
+    to: "/games/world_of_warcraft",
     cardSvg: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -355,6 +360,7 @@ export const supportedGames = [
   {
     id: 6,
     name: "Rust",
+    to: "/games/rust",
     cardSvg: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -408,6 +414,7 @@ export const supportedGames = [
   {
     id: 7,
     name: "Gta 5",
+    to: "/games/grand_theft_auto_5",
     cardSvg: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -464,6 +471,7 @@ export const supportedGames = [
   {
     id: 8,
     name: "Valorant",
+    to: "/games/valorant",
     cardSvg: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -516,5 +524,6 @@ export const supportedGames = [
       </svg>
     ),
   },
-
 ];
+
+

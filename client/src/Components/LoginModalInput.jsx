@@ -5,7 +5,7 @@ const LoginModelInput = ({
   className,
   registerForm,
   setRegisterForm,
-  name
+  name,
 }) => {
   const handleChange = (e) => {
     setRegisterForm({ ...registerForm, [name]: e.target.value });
