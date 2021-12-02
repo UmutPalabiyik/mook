@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { TiArrowRightThick, TiArrowLeftThick } from "react-icons/ti";
 import { miniKratosBg, miniValhallaBg } from "../Utils/Helpers/Images.helpers";
+import { useNavigate } from "react-router";
 
 import LoginModelInput from "./LoginModalInput";
 import {
@@ -15,6 +16,7 @@ import {
 const LoginModal = ({ showModal, toggleModalShow }) => {
   const dispatch = useDispatch();
   const modalError = useSelector(errorResponse);
+  const navigate = useNavigate();
 
   const [cover, setCover] = useState(true);
   const initialRegisterForm = {
@@ -36,7 +38,7 @@ const LoginModal = ({ showModal, toggleModalShow }) => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    dispatch(userRegister({ registerForm, closeModal, dispatch }));
+    dispatch(userRegister({ registerForm, closeModal, dispatch, navigate }));
   };
 
   return (

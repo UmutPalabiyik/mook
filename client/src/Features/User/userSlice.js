@@ -2,13 +2,15 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import LoginService from "../../Services/Login.service";
 
 export const userRegister = createAsyncThunk(
-  "users/register",
+  'users/register',
+
   async (params) => {
     try {
-      const { registerForm, dispatch, closeModal } = params;
+      const { registerForm, dispatch, closeModal, navigate } = params;
       const { data } = await LoginService.register(registerForm);
       dispatch(handleError(null));
       closeModal();
+      navigate("/");
 
       return data;
     } catch (error) {
@@ -18,6 +20,22 @@ export const userRegister = createAsyncThunk(
     }
   }
 );
+
+export const userLogout = createAsyncThunk('users/logout', async (params) => {
+  try {
+    
+    const { id, navigate, dispatch } = params;
+    const { data } = await LoginService.logout(id);
+    localStorage.removeItem('user');
+    dispatch(clearUserData());
+    navigate('/');
+
+    return data;
+  } catch (error) {
+    return error.response.data
+  }
+});
+
 
 const initialState = {
   userData: {},
@@ -32,6 +50,9 @@ export const userSlice = createSlice({
     handleError: (state, action) => {
       state.errorResponse = action.payload;
     },
+    clearUserData: (state) => {
+      state.userData = {}
+    }
   },
   extraReducers: {
     [userRegister.pending]: (state, action) => {
@@ -50,6 +71,5 @@ export const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
-export const { handleError } = userSlice.actions;
-export const errorResponse = state => state.user.errorResponse;
-
+export const { handleError, clearUserData } = userSlice.actions;
+export const errorResponse = (state) => state.user.errorResponse;

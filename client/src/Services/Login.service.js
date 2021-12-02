@@ -6,6 +6,9 @@ const LoginService = {
   register: async (registerData) => {
     return await API.post("/users/register", registerData);
   },
+  logout: async (id) => {
+    return await API.get(`/users/logout/${id}`);
+  },
 };
 
 export default LoginService;

@@ -3,12 +3,7 @@ import {
   gta_5,
 } from "../Utils/Helpers/Images.helpers";
 
-const Home = ({ toggleModalShow }) => {
-  // for showing login/sign up modal
-  const showModalButton = () => {
-    toggleModalShow();
-  };
-
+const Home = () => {
   return (
     <section className="home section">
       <div className="home__container grid container">
@@ -26,10 +21,9 @@ const Home = ({ toggleModalShow }) => {
               travel alone. Join a team. Enjoy more. You can find friends to
               play with together here. You can find friends to play with
               together here. Wolves don't travel alone. Join a team. Enjoy more.
+              You can find friends to play with together here. Wolves don't
+              travel alone. Join a team. Enjoy more.
             </p>
-            <button className="home__button" onClick={showModalButton}>
-              Join the team
-            </button>
           </div>
         </div>
 
