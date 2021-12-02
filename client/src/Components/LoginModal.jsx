@@ -5,13 +5,13 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { TiArrowRightThick, TiArrowLeftThick } from "react-icons/ti";
 import { miniKratosBg, miniValhallaBg } from "../Utils/Helpers/Images.helpers";
 import { useNavigate } from "react-router";
+import LoginService from "../Services/Login.service";
 
 import LoginModelInput from "./LoginModalInput";
 import {
   errorResponse,
   handleError,
-  userSignin,
-  userSignup,
+  userSubmit,
 } from "../Features/User/userSlice";
 
 const LoginModal = ({ showModal, toggleModalShow }) => {
@@ -30,30 +30,38 @@ const LoginModal = ({ showModal, toggleModalShow }) => {
     password: "",
   };
 
-
-
   const [signupForm, setSignupForm] = useState(initialSignupForm);
   const [signinForm, setSigninForm] = useState(initialSigninForm);
-
 
   const toggleCover = () => {
     setCover(!cover);
     dispatch(handleError(null));
+    clearForm();
   };
 
   const closeModal = () => {
     toggleModalShow();
     dispatch(handleError(null));
+    clearForm();
   };
 
-  const handleSignup = (e) => {
-    e.preventDefault();
-    dispatch(userSignup({ signupForm, closeModal, dispatch, navigate }));
+  const clearForm = () => {
+    setSignupForm(initialSignupForm);
+    setSigninForm(initialSigninForm);
   };
 
-  const handleSignin = (e) => {
+  const handleSubmit = (e, submitFunc, submitForm) => {
     e.preventDefault();
-    dispatch(userSignin({ signinForm, closeModal, dispatch, navigate }));
+    dispatch(
+      userSubmit({
+        submitFunc,
+        submitForm,
+        signinForm,
+        closeModal,
+        dispatch,
+        navigate,
+      })
+    );
   };
 
   return (
@@ -81,7 +89,10 @@ const LoginModal = ({ showModal, toggleModalShow }) => {
             </div>
           </div>
 
-          <form className="login-modal__form" onSubmit={handleSignup}>
+          <form
+            className="login-modal__form"
+            onSubmit={(e) => handleSubmit(e, LoginService.signup, signupForm)}
+          >
             <LoginModelInput
               placeholder="E-mail"
               type="email"
@@ -128,7 +139,11 @@ const LoginModal = ({ showModal, toggleModalShow }) => {
             />
           </div>
 
-          <form className="login-modal__form" action="" onSubmit={handleSignin}>
+          <form
+            className="login-modal__form"
+            action=""
+            onSubmit={(e) => handleSubmit(e, LoginService.signin, signinForm)}
+          >
             <LoginModelInput
               placeholder="E-mail"
               type="email"

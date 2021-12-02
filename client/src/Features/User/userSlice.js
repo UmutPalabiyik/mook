@@ -1,27 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import LoginService from "../../Services/Login.service";
 
-export const userSignup = createAsyncThunk("users/signup", async (params) => {
+export const userSubmit = createAsyncThunk("users/signup", async (params) => {
   try {
-    const { signupForm, dispatch, closeModal, navigate } = params;
-    const { data } = await LoginService.signup(signupForm);
-    dispatch(handleError(null));
-    closeModal();
-    navigate("/");
-
-    return data;
-  } catch (error) {
-    const { dispatch } = params;
-    const errorMessage = error.response.data.message;
-    dispatch(handleError(errorMessage));
-  }
-});
-
-export const userSignin = createAsyncThunk("users/signin", async (params) => {
-
-  try {
-    const { navigate, dispatch, closeModal, signinForm } = params;
-    const { data } = await LoginService.signin(signinForm);
+    const { submitFunc, submitForm, dispatch, closeModal, navigate } = params;
+    const { data } = await submitFunc(submitForm);
+    console.log(submitFunc, submitForm, dispatch, closeModal, navigate);
     dispatch(handleError(null));
     closeModal();
     navigate("/");
@@ -66,31 +50,17 @@ export const userSlice = createSlice({
     },
   },
   extraReducers: {
-    [userSignup.pending]: (state, action) => {
+    [userSubmit.pending]: (state, action) => {
       state.status = "loading";
     },
-    [userSignup.fulfilled]: (state, action) => {
+    [userSubmit.fulfilled]: (state, action) => {
       if (action.payload) {
         state.status = "succeeded";
         state.userData = action.payload;
         localStorage.setItem("user", JSON.stringify(action.payload));
       }
     },
-    [userSignup.error]: (state, action) => {
-      state.status = "failed";
-      state.errorResponse = action.payload;
-    },
-    [userSignin.pending]: (state, action) => {
-      state.status = "loading";
-    },
-    [userSignin.fulfilled]: (state, action) => {
-      if (action.payload) {
-        state.status = "succeeded";
-        state.userData = action.payload;
-        localStorage.setItem("user", JSON.stringify(action.payload));
-      }
-    },
-    [userSignin.error]: (state, action) => {
+    [userSubmit.error]: (state, action) => {
       state.status = "failed";
       state.errorResponse = action.payload;
     },

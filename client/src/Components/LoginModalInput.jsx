@@ -19,6 +19,7 @@ const LoginModelInput = ({
       type={type}
       required={isRequired}
       onChange={handleChange}
+      value={formData[name]}
     />
   );
 };
