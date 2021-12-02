@@ -10,7 +10,8 @@ import LoginModelInput from "./LoginModalInput";
 import {
   errorResponse,
   handleError,
-  userRegister,
+  userSignin,
+  userSignup,
 } from "../Features/User/userSlice";
 
 const LoginModal = ({ showModal, toggleModalShow }) => {
@@ -19,12 +20,21 @@ const LoginModal = ({ showModal, toggleModalShow }) => {
   const navigate = useNavigate();
 
   const [cover, setCover] = useState(true);
-  const initialRegisterForm = {
+  const initialSignupForm = {
     email: "",
     password: "",
     repassword: "",
   };
-  const [registerForm, setRegisterForm] = useState(initialRegisterForm);
+  const initialSigninForm = {
+    email: "",
+    password: "",
+  };
+
+
+
+  const [signupForm, setSignupForm] = useState(initialSignupForm);
+  const [signinForm, setSigninForm] = useState(initialSigninForm);
+
 
   const toggleCover = () => {
     setCover(!cover);
@@ -36,9 +46,14 @@ const LoginModal = ({ showModal, toggleModalShow }) => {
     dispatch(handleError(null));
   };
 
-  const handleRegister = (e) => {
+  const handleSignup = (e) => {
     e.preventDefault();
-    dispatch(userRegister({ registerForm, closeModal, dispatch, navigate }));
+    dispatch(userSignup({ signupForm, closeModal, dispatch, navigate }));
+  };
+
+  const handleSignin = (e) => {
+    e.preventDefault();
+    dispatch(userSignin({ signinForm, closeModal, dispatch, navigate }));
   };
 
   return (
@@ -66,15 +81,15 @@ const LoginModal = ({ showModal, toggleModalShow }) => {
             </div>
           </div>
 
-          <form className="login-modal__form" onSubmit={handleRegister}>
+          <form className="login-modal__form" onSubmit={handleSignup}>
             <LoginModelInput
               placeholder="E-mail"
               type="email"
               isRequired={true}
               className="login-modal__input"
               name="email"
-              registerForm={registerForm}
-              setRegisterForm={setRegisterForm}
+              formData={signupForm}
+              setFormData={setSignupForm}
             />
             <LoginModelInput
               placeholder="Password"
@@ -82,8 +97,8 @@ const LoginModal = ({ showModal, toggleModalShow }) => {
               isRequired={true}
               className="login-modal__input"
               name="password"
-              registerForm={registerForm}
-              setRegisterForm={setRegisterForm}
+              formData={signupForm}
+              setFormData={setSignupForm}
             />
             <LoginModelInput
               placeholder="Re-Password"
@@ -91,8 +106,8 @@ const LoginModal = ({ showModal, toggleModalShow }) => {
               isRequired={true}
               className="login-modal__input"
               name="repassword"
-              registerForm={registerForm}
-              setRegisterForm={setRegisterForm}
+              formData={signupForm}
+              setFormData={setSignupForm}
             />
             <button className="login-modal__form-button login-modal__form-button--register">
               REGISTER
@@ -113,23 +128,30 @@ const LoginModal = ({ showModal, toggleModalShow }) => {
             />
           </div>
 
-          <form className="login-modal__form" action="">
+          <form className="login-modal__form" action="" onSubmit={handleSignin}>
             <LoginModelInput
               placeholder="E-mail"
               type="email"
               isRequired={true}
               className="login-modal__input"
+              name="email"
+              formData={signinForm}
+              setFormData={setSigninForm}
             />
             <LoginModelInput
               placeholder="Password"
               type="password"
               isRequired={true}
               className="login-modal__input"
+              name="password"
+              formData={signinForm}
+              setFormData={setSigninForm}
             />
             <span className="login-modal__form-forget">Forget Password ?</span>
             <button className="login-modal__form-button login-modal__form-button--login">
               LOGIN
             </button>
+            <span className="login-modal__error">{modalError}</span>
           </form>
         </div>
       </div>
