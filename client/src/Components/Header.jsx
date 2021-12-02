@@ -3,6 +3,7 @@ import LoginModal from "./LoginModal";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { userLogout } from "../Features/User/userSlice";
+import decode from "jwt-decode";
 
 const Header = ({ toggleModalShow, showModal }) => {
   const [burgerAnimation, setBurgerAnimation] = useState(false);
@@ -10,7 +11,6 @@ const Header = ({ toggleModalShow, showModal }) => {
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
 
   // for showing login/sign up modal
   const showModalButton = () => {
@@ -22,7 +22,7 @@ const Header = ({ toggleModalShow, showModal }) => {
   };
 
   const handleLogout = async (id) => {
-    await dispatch(userLogout({id, navigate, dispatch}));
+    await dispatch(userLogout({ id, navigate, dispatch }));
     setUser(null);
   };
 
@@ -83,7 +83,11 @@ const Header = ({ toggleModalShow, showModal }) => {
         </NavLink>
       </li>
       <li className={`header__item  ${burgerListItemAnimation}`}>
-        <NavLink className="header__text header__logout" to="/" onClick={() => handleLogout(user.user._id)}>
+        <NavLink
+          className="header__text header__logout"
+          to="/"
+          onClick={() => handleLogout(user.user._id)}
+        >
           Logout
         </NavLink>
       </li>
@@ -93,6 +97,17 @@ const Header = ({ toggleModalShow, showModal }) => {
   useEffect(() => {
     if (localStorage.getItem("user") && !user) {
       setUser(JSON.parse(localStorage.getItem("user")));
+    }
+
+    const accessToken = user?.accessToken;
+
+    if (accessToken) {
+      const decodedAccessToken = decode(accessToken);
+
+      if(decodedAccessToken.exp * 1000 < new Date().getTime()){
+        handleLogout(user.user._id);
+      }
+      console.log(decodedAccessToken);
     }
   }, [location, user]);
 

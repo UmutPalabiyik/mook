@@ -3,13 +3,14 @@ const LoginModelInput = ({
   type,
   isRequired,
   className,
-  registerForm,
-  setRegisterForm,
+  formData,
+  setFormData,
   name,
 }) => {
   const handleChange = (e) => {
-    setRegisterForm({ ...registerForm, [name]: e.target.value });
+    setFormData({ ...formData, [name]: e.target.value });
   };
+
 
   return (
     <input
@@ -18,6 +19,7 @@ const LoginModelInput = ({
       type={type}
       required={isRequired}
       onChange={handleChange}
+      value={formData[name]}
     />
   );
 };
