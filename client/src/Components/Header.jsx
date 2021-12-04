@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import LoginModal from "./LoginModal";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { userLogout } from "../Features/User/userSlice";
+import { userLogout, userRefreshAccessToken } from "../Features/User/userSlice";
 import decode from "jwt-decode";
 
 const Header = ({ toggleModalShow, showModal }) => {
@@ -21,6 +21,7 @@ const Header = ({ toggleModalShow, showModal }) => {
     setBurgerAnimation(!burgerAnimation);
   };
 
+  console.log("userrrrrrrrrrrrrrr", user)
   const handleLogout = async (id) => {
     await dispatch(userLogout({ id, navigate, dispatch }));
     setUser(null);
@@ -94,22 +95,31 @@ const Header = ({ toggleModalShow, showModal }) => {
     </ul>
   );
 
+  const renewAccessToken = useCallback(async (id) => {
+    await dispatch(userRefreshAccessToken({id}));
+    setUser(JSON.parse(localStorage.getItem("user")));
+  }, [dispatch]);
+
   useEffect(() => {
     if (localStorage.getItem("user") && !user) {
       setUser(JSON.parse(localStorage.getItem("user")));
     }
 
-    const accessToken = user?.accessToken;
+    const interval = setInterval(() => {
+      const accessToken = user?.accessToken;
 
-    if (accessToken) {
-      const decodedAccessToken = decode(accessToken);
+      if (accessToken) {
+        const decodedAccessToken = decode(accessToken);
 
-      if(decodedAccessToken.exp * 1000 < new Date().getTime()){
-        handleLogout(user.user._id);
+        if (decodedAccessToken.exp * 1000 < new Date().getTime()) {
+          console.log("yenile abi")
+          renewAccessToken(user.user._id);
+        }
       }
-      console.log(decodedAccessToken);
-    }
-  }, [location, user]);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [location, user, renewAccessToken]);
 
   return (
     <header className="header">

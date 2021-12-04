@@ -13,6 +13,9 @@ const LoginService = {
   logout: async (id) => {
     return await API.get(`/users/logout/${id}`);
   },
+  refreshAccessToken: async (id) => {
+    return await API.get(`users/refresh/${id}`);
+  }
 
 };
 

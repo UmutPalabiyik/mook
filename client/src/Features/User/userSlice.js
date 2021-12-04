@@ -1,12 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import LoginService from "../../Services/Login.service";
 
-export const userSubmit = createAsyncThunk("users/signup", async (params) => {
+export const userSubmit = createAsyncThunk("user/signup", async (params) => {
   try {
     const { submitFunc, submitForm, dispatch, closeModal, navigate } = params;
     const { data } = await submitFunc(submitForm);
-    console.log(submitFunc, submitForm, dispatch, closeModal, navigate);
-    dispatch(handleError(null));
+    dispatch(handleError(null)); // clear error message after
     closeModal();
     navigate("/");
 
@@ -18,7 +17,7 @@ export const userSubmit = createAsyncThunk("users/signup", async (params) => {
   }
 });
 
-export const userLogout = createAsyncThunk("users/logout", async (params) => {
+export const userLogout = createAsyncThunk("user/logout", async (params) => {
   try {
     const { id, navigate, dispatch } = params;
     const { data } = await LoginService.logout(id);
@@ -31,6 +30,20 @@ export const userLogout = createAsyncThunk("users/logout", async (params) => {
     return error.response.data;
   }
 });
+
+export const userRefreshAccessToken = createAsyncThunk(
+  "user/refreshAccessToken",
+  async (params) => {
+    try {
+      const { id } = params;
+      console.log(id);
+      const { data } = await LoginService.refreshAccessToken(id);
+      return data;
+    } catch (error) {
+      return error.response.data;
+    }
+  }
+);
 
 const initialState = {
   userData: {},
@@ -63,6 +76,14 @@ export const userSlice = createSlice({
     [userSubmit.error]: (state, action) => {
       state.status = "failed";
       state.errorResponse = action.payload;
+    },
+    [userRefreshAccessToken.fulfilled]: (state, action) => {
+      if (action.payload) {
+        state.status = "succeeded";
+        const data = { ...state.userData, accessToken: action.payload };
+        state.userData = data;
+        localStorage.setItem("user", JSON.stringify(data));
+      }
     },
   },
 });
