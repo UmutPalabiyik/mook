@@ -21,7 +21,6 @@ const Header = ({ toggleModalShow, showModal }) => {
     setBurgerAnimation(!burgerAnimation);
   };
 
-  console.log("userrrrrrrrrrrrrrr", user)
   const handleLogout = async (id) => {
     await dispatch(userLogout({ id, navigate, dispatch }));
     setUser(null);
@@ -87,7 +86,7 @@ const Header = ({ toggleModalShow, showModal }) => {
         <NavLink
           className="header__text header__logout"
           to="/"
-          onClick={() => handleLogout(user.user._id)}
+          onClick={() => handleLogout(JSON.parse(localStorage.getItem('user')).user._id)}
         >
           Logout
         </NavLink>
@@ -95,10 +94,13 @@ const Header = ({ toggleModalShow, showModal }) => {
     </ul>
   );
 
-  const renewAccessToken = useCallback(async (id) => {
-    await dispatch(userRefreshAccessToken({id}));
-    setUser(JSON.parse(localStorage.getItem("user")));
-  }, [dispatch]);
+  const renewAccessToken = useCallback(
+    async (id) => {
+      await dispatch(userRefreshAccessToken({ id }));
+      setUser(JSON.parse(localStorage.getItem("user")));
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     if (localStorage.getItem("user") && !user) {
@@ -112,7 +114,6 @@ const Header = ({ toggleModalShow, showModal }) => {
         const decodedAccessToken = decode(accessToken);
 
         if (decodedAccessToken.exp * 1000 < new Date().getTime()) {
-          console.log("yenile abi")
           renewAccessToken(user.user._id);
         }
       }

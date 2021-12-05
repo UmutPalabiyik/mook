@@ -36,7 +36,6 @@ export const userRefreshAccessToken = createAsyncThunk(
   async (params) => {
     try {
       const { id } = params;
-      console.log(id);
       const { data } = await LoginService.refreshAccessToken(id);
       return data;
     } catch (error) {
