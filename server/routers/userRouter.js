@@ -46,6 +46,11 @@ router.post("/signup", async (req, res) => {
       refreshToken,
     });
 
+    res.cookie("token", refreshToken, {
+      httpOnly: true,
+      sameSite: "strict",
+    });
+
     res.status(200).json({ user, accessToken });
   } catch (error) {
     res.status(500).json(error.message);
@@ -99,6 +104,10 @@ router.post("/signin", async (req, res) => {
       }
     );
 
+    res.cookie("token", refreshToken, {
+      httpOnly: true,
+      sameSite: "strict",
+    });
     res.status(200).json({ user, accessToken });
   } catch (error) {
     res.status(500).json(error);
@@ -108,6 +117,7 @@ router.post("/signin", async (req, res) => {
 router.get("/logout/:id", async (req, res) => {
   try {
     const { id } = req.params;
+    res.clearCookie('token');
     await tokenModel.findOneAndUpdate(
       {
         userId: id,
@@ -130,6 +140,10 @@ router.get("/refresh/:id", async (req, res) => {
     const { id } = req.params;
     const { refreshToken } = await tokenModel.findOne({ userId: id });
     if (!refreshToken) return res.status(401);
+
+    const cookie = req.cookies.token;
+    if (!cookie) return res.status(403);
+    if (cookie !== refreshToken) return res.status(403);
 
     jwt.verify(refreshToken, process.env.REFRESH_TOKEN, (err, decoded) => {
       if (err) return res.status(403).json(err);
