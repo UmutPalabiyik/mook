@@ -10,7 +10,10 @@ const app = express();
 
 app.use(express.json());
 app.use(
-  cors()
+  cors({
+    credentials: true,
+    origin: "https://mook-f2b4e.web.app",
+  })
 );
 app.use(cookieParser());
 
