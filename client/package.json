@@ -8,6 +8,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.24.0",
+    "env-cmd": "^10.1.0",
     "firebase": "^9.2.0",
     "jwt-decode": "^3.1.2",
     "node-sass": "^6.0.1",
@@ -20,8 +21,10 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start:dev": "env-cmd -f ./.dev.env react-scripts start",
+    "build:dev": "env-cmd -f ./.dev.env react-scripts build",
+    "start:prod": "env-cmd -f ./.prod.env react-scripts start",
+    "build:prod": "env-cmd -f ./.prod.env react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
