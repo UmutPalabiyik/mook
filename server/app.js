@@ -9,7 +9,12 @@ import config from "./config.js";
 const app = express();
 
 app.use(express.json());
-app.use(cors({ credentials: true, origin: config.ORIGIN }));
+app.use(
+  cors({
+    credentials: true,
+    origin: ["https://mook-f2b4e.web.app", "http://localhost:3000"],
+  })
+);
 app.use(cookieParser());
 
 //routers
@@ -17,9 +22,6 @@ app.use("/users", userRouter);
 
 //Configure ENV file and Require Connection File
 dotenv.config({ path: "./config.env" });
-
-console.log(`NODE_ENV=${config.PORT}`);
-console.log(config)
 
 
 mongoose
