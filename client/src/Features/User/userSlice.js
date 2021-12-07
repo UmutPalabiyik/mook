@@ -36,7 +36,6 @@ export const userRefreshAccessToken = createAsyncThunk(
   async (params) => {
     try {
       const { id } = params;
-      console.log(id);
       const { data } = await LoginService.refreshAccessToken(id);
       return data;
     } catch (error) {
@@ -80,7 +79,7 @@ export const userSlice = createSlice({
     [userRefreshAccessToken.fulfilled]: (state, action) => {
       if (action.payload) {
         state.status = "succeeded";
-        const data = { ...state.userData, accessToken: action.payload };
+        const data = { ...JSON.parse(localStorage.getItem('user')), accessToken: action.payload };
         state.userData = data;
         localStorage.setItem("user", JSON.stringify(data));
       }

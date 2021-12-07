@@ -4,6 +4,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { userLogout, userRefreshAccessToken } from "../Features/User/userSlice";
 import decode from "jwt-decode";
+import LoginService from "../Services/Login.service";
 
 const Header = ({ toggleModalShow, showModal }) => {
   const [burgerAnimation, setBurgerAnimation] = useState(false);
@@ -11,6 +12,7 @@ const Header = ({ toggleModalShow, showModal }) => {
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const userId = LoginService.userId();
 
   // for showing login/sign up modal
   const showModalButton = () => {
@@ -21,7 +23,6 @@ const Header = ({ toggleModalShow, showModal }) => {
     setBurgerAnimation(!burgerAnimation);
   };
 
-  console.log("userrrrrrrrrrrrrrr", user)
   const handleLogout = async (id) => {
     await dispatch(userLogout({ id, navigate, dispatch }));
     setUser(null);
@@ -87,7 +88,7 @@ const Header = ({ toggleModalShow, showModal }) => {
         <NavLink
           className="header__text header__logout"
           to="/"
-          onClick={() => handleLogout(user.user._id)}
+          onClick={() => handleLogout(userId)}
         >
           Logout
         </NavLink>
@@ -95,10 +96,14 @@ const Header = ({ toggleModalShow, showModal }) => {
     </ul>
   );
 
-  const renewAccessToken = useCallback(async (id) => {
-    await dispatch(userRefreshAccessToken({id}));
-    setUser(JSON.parse(localStorage.getItem("user")));
-  }, [dispatch]);
+  const renewAccessToken = useCallback(
+    
+    async (id) => {
+      await dispatch(userRefreshAccessToken({ id }));
+      setUser(JSON.parse(localStorage.getItem("user")));
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     if (localStorage.getItem("user") && !user) {
@@ -112,14 +117,13 @@ const Header = ({ toggleModalShow, showModal }) => {
         const decodedAccessToken = decode(accessToken);
 
         if (decodedAccessToken.exp * 1000 < new Date().getTime()) {
-          console.log("yenile abi")
-          renewAccessToken(user.user._id);
+          renewAccessToken(userId)
         }
       }
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [location, user, renewAccessToken]);
+  }, [location, user, renewAccessToken, userId ]);
 
   return (
     <header className="header">

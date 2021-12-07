@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import "./App.scss";
 import Header from "./Components/Header";
 import Home from "./Container/Home";
@@ -12,6 +12,8 @@ const App = () => {
   const toggleModalShow = () => {
     setShowModal(!showModal);
   };
+
+  console.log(process.env.REACT_APP_BASE_URL);
 
   return (
     <div className="app">
