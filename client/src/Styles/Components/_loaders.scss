@@ -1,0 +1,51 @@
+.circles-spinner {
+  position: relative;
+  height: 72px;
+  width: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: spin 0.5s ease-in-out infinite;
+
+  &__layer {
+    position: absolute;
+
+    &--one {
+      width: 72px;
+      height: 72px;
+      border: 8px solid $first-color;
+      border-radius: 50%;
+      border-top-color: transparent;
+    }
+
+    &--two {
+      width: 48px;
+      height: 48px;
+      border: 8px solid $second-color;
+      border-radius: 50%;
+      border-bottom-color: transparent;
+    }
+
+    &--three {
+      width: 24px;
+      height: 24px;
+      border: 8px solid $first-color;
+      border-radius: 50%;
+      border-left-color: transparent;
+    }
+
+    &--four {
+      border: 2px solid $second-color;
+      border-radius: 50%;
+    }
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

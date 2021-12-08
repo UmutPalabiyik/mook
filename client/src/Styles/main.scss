@@ -1,28 +1,23 @@
-
 // Layout
-@import 'Layout/header';
-@import 'Layout/layout';
-@import 'Layout/home';
-@import 'Layout/About';
-@import 'Layout/supportedGames';
-
-// Container
+@import "Layout/header";
+@import "Layout/layout";
+@import "Layout/home";
+@import "Layout/About";
+@import "Layout/supportedGames";
 
 
 // Components
-@import 'Components/loginModal';
-@import 'Components/mediaqueries';
-@import 'Components/supportedGameCard';
-
+@import "Components/loginModal";
+@import "Components/mediaqueries";
+@import "Components/supportedGameCard";
+@import "Components/loaders";
 
 // Abstracts
-@import 'Abstracts/mixins';
-@import 'Config/variables';
+@import "Abstracts/mixins";
+@import "Config/variables";
 
 // Reset
-@import 'Base/reset';
+@import "Base/reset";
 
 // Typography
-@import 'Base/typography';
-
-
+@import "Base/typography";
