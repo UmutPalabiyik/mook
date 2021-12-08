@@ -113,6 +113,7 @@ router.post("/signin", async (req, res) => {
     res.status(200).json({ user, accessToken });
   } catch (error) {
     res.status(500).json(error);
+    
   }
 });
 
@@ -159,7 +160,7 @@ router.get("/refresh/:id", async (req, res) => {
       res.status(200).json(accessToken);
     });
   } catch (error) {
-    console.log(err.message);
+    res.status(500).json(error, "Logout error");
   }
 });
 

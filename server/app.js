@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: "https://mook-f2b4e.web.app",
+    origin: ["https://mook-f2b4e.web.app", "http://localhost:3000"],
   })
 );
 app.use(cookieParser());

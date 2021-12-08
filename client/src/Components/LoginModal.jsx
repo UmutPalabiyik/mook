@@ -84,7 +84,7 @@ const LoginModal = ({ showModal, toggleModalShow }) => {
               onClick={closeModal}
             />
             <div className="login-modal__icon-container" onClick={toggleCover}>
-              <span className="login-modal__icon-text">Login</span>
+              <span className="login-modal__icon-text">To Login</span>
               <TiArrowRightThick className="login-modal__icon  login-modal__icon--right" />
             </div>
           </div>
@@ -131,7 +131,7 @@ const LoginModal = ({ showModal, toggleModalShow }) => {
           <div className="login-modal__header">
             <div className="login-modal__icon-container" onClick={toggleCover}>
               <TiArrowLeftThick className="login-modal__icon  login-modal__icon--left" />
-              <span className="login-modal__icon-text">Register</span>
+              <span className="login-modal__icon-text">To Register</span>
             </div>
             <AiOutlineCloseCircle
               className="login-modal__icon login-modal__close"
