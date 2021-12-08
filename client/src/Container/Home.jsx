@@ -5,6 +5,7 @@ import {
 
 const Home = () => {
   return (
+
     <section className="home section">
       <div className="home__container grid container">
         <div className="home__row grid">
