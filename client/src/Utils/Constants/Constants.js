@@ -64,6 +64,7 @@ export const supportedGames = [
         </g>
       </svg>
     ),
+    background: "https://ik.imagekit.io/t5nhryfqbdr/LoL_wp_6KO2SCgAW-.png?updatedAt=1639071760285"
   },
   {
     id: 2,
@@ -216,11 +217,12 @@ export const supportedGames = [
         />
       </svg>
     ),
+    background: "https://ik.imagekit.io/t5nhryfqbdr/rocket-league-4k_8JdYObNK9V.jpg?updatedAt=1639152298439"
   },
   {
     id: 3,
     name: "Dota 2",
-    to: "/games/dota2",
+    to: "/games/dota_2",
     cardSvg: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -247,6 +249,7 @@ export const supportedGames = [
         />
       </svg>
     ),
+    background: "https://ik.imagekit.io/t5nhryfqbdr/dpta_2_wp_7MIfHC8hIkz.jpg?updatedAt=1639071759957"
   },
   {
     id: 4,
@@ -273,6 +276,7 @@ export const supportedGames = [
         />
       </svg>
     ),
+    background: "https://ik.imagekit.io/t5nhryfqbdr/fortnite_wp_-Tb5lDWzv_.jpg?updatedAt=1639071760274"
   },
   {
     id: 5,
@@ -356,6 +360,7 @@ export const supportedGames = [
         />
       </svg>
     ),
+    background: "https://ik.imagekit.io/t5nhryfqbdr/WoW_wp_bONJDQcSlPh.jpg?updatedAt=1639071760721"
   },
   {
     id: 6,
@@ -410,6 +415,7 @@ export const supportedGames = [
         <path d="M25.826,21.843c0.516-0.007,1.032-0.015,1.548-0.029c0.213-0.006,0.445,0.008,0.638-0.101 c0.238-0.135,0.327-0.375,0.352-0.635c0.042-0.446,0.091-0.915,0.083-1.363c-0.008-0.472-0.225-0.86-0.603-1.137 c-0.36-0.263-0.802-0.349-1.24-0.367c-0.419-0.017-0.841-0.017-1.26-0.025c-0.832-0.015-1.723,0-2.524,0.246 c-0.124,0.038-0.204,0.113-0.261,0.199c-0.058,0.075-0.102,0.165-0.106,0.284c-0.025,0.841-0.051,1.681-0.076,2.522 c-0.008,0.252,0.236,0.524,0.5,0.5C23.857,21.846,24.843,21.855,25.826,21.843z M24.828,19.187 c0.293-0.005,0.586-0.001,0.879,0.011c0.362,0.016,0.734-0.02,1.093,0.026c0.215,0.027,0.521,0.117,0.62,0.335 c0.062,0.136,0.022,0.324,0.012,0.468c-0.013,0.201-0.026,0.402-0.039,0.603c-0.004,0.059-0.008,0.118-0.011,0.177 c-0.039,0.005-0.081,0.01-0.108,0.011c-0.117,0.003-0.233,0.006-0.349,0.008c-0.416,0.009-0.832,0.015-1.248,0.02 c-0.761,0.009-1.523,0.019-2.283,0.064c0.016-0.527,0.032-1.054,0.048-1.58C23.897,19.235,24.365,19.195,24.828,19.187z" />
       </svg>
     ),
+    background: "https://ik.imagekit.io/t5nhryfqbdr/rust_wp_iLQNHqcg6B.jpg?updatedAt=1639072218078"
   },
   {
     id: 7,
@@ -467,6 +473,7 @@ export const supportedGames = [
         />
       </svg>
     ),
+    background: "https://ik.imagekit.io/t5nhryfqbdr/gta_5_wp_1WAue5iAI.jpg?updatedAt=1639071760761"
   },
   {
     id: 8,
@@ -523,6 +530,7 @@ export const supportedGames = [
         />
       </svg>
     ),
+    background: "https://ik.imagekit.io/t5nhryfqbdr/valorant_wp_kiRy8HnP7z.jpg?updatedAt=1639071759070"
   },
 ];
 

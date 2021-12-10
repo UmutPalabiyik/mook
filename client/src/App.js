@@ -6,13 +6,13 @@ import SupportedGames from "./Container/SupportedGames";
 import "./Styles/main.scss";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
+import Game from "./Screens/Game.Screen";
 
 const App = () => {
   const [showModal, setShowModal] = useState(false);
   const toggleModalShow = () => {
     setShowModal(!showModal);
   };
-
 
   return (
     <div className="app">
@@ -33,7 +33,20 @@ const App = () => {
                 </main>
               </>
             }
-          ></Route>
+          />
+          <Route
+            exact
+            path="/games/:game"
+            element={
+              <>
+                <Header
+                  toggleModalShow={toggleModalShow}
+                  showModal={showModal}
+                />
+                <Game />
+              </>
+            }
+          />
         </Routes>
       </Router>
     </div>
