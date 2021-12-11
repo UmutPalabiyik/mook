@@ -14,7 +14,7 @@ const Game = () => {
       <div className="game__container container">
 
         <header className="game__header">
-          <ul className="game__header-list">
+          <ul className="game__header-list grid">
             <li className="game__header-item">Chat</li>
             <li className="game__header-item">Messages</li>
             <li className="game__header-item">Friends</li>
