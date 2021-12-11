@@ -7,6 +7,7 @@ import "./Styles/main.scss";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import Game from "./Screens/Game.Screen";
+import ScrollToTop from "./Utils/Helpers/ScrollToTop";
 
 const App = () => {
   const [showModal, setShowModal] = useState(false);
@@ -17,37 +18,39 @@ const App = () => {
   return (
     <div className="app">
       <Router>
-        <Routes>
-          <Route
-            exact
-            path="/"
-            element={
-              <>
-                <Header
-                  toggleModalShow={toggleModalShow}
-                  showModal={showModal}
-                />
-                <main className="main">
-                  <Home />
-                  <SupportedGames />
-                </main>
-              </>
-            }
-          />
-          <Route
-            exact
-            path="/games/:game"
-            element={
-              <>
-                <Header
-                  toggleModalShow={toggleModalShow}
-                  showModal={showModal}
-                />
-                <Game />
-              </>
-            }
-          />
-        </Routes>
+        <ScrollToTop>
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={
+                <>
+                  <Header
+                    toggleModalShow={toggleModalShow}
+                    showModal={showModal}
+                  />
+                  <main className="main">
+                    <Home />
+                    <SupportedGames />
+                  </main>
+                </>
+              }
+            />
+            <Route
+              exact
+              path="/games/:game"
+              element={
+                <>
+                  <Header
+                    toggleModalShow={toggleModalShow}
+                    showModal={showModal}
+                  />
+                  <Game />
+                </>
+              }
+            />
+          </Routes>
+        </ScrollToTop>
       </Router>
     </div>
   );
