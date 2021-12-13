@@ -33,7 +33,6 @@ const LoginModal = ({ showModal, toggleModalShow }) => {
     password: "",
   };
 
-  console.log("asdasd", submitStatus)
 
   const [signupForm, setSignupForm] = useState(initialSignupForm);
   const [signinForm, setSigninForm] = useState(initialSigninForm);

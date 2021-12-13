@@ -8,6 +8,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import Game from "./Screens/Game.Screen";
 import ScrollToTop from "./Utils/Helpers/ScrollToTop";
+import { SocketContext, socket } from "./Context/Socket";
+
 
 const App = () => {
   const [showModal, setShowModal] = useState(false);
@@ -16,6 +18,7 @@ const App = () => {
   };
 
   return (
+    <SocketContext.Provider value={socket}>
     <div className="app">
       <Router>
         <ScrollToTop>
@@ -37,7 +40,6 @@ const App = () => {
               }
             />
             <Route
-              exact
               path="/games/:game"
               element={
                 <>
@@ -53,6 +55,7 @@ const App = () => {
         </ScrollToTop>
       </Router>
     </div>
+    </SocketContext.Provider>
   );
 };
 
