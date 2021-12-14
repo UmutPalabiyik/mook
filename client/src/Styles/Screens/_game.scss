@@ -30,12 +30,30 @@
   }
 
   &__body {
+    @include flexbox($direction: column,$justify-content: flex-start);
     background-color: $first-color;
     width: 100%;
-    min-height: 65vh;
+    height: 65vh;
     border-radius: 0.1rem;
+    padding: 2rem 1rem 0 1rem;
+    overflow-y: scroll;
+
   }
 
+  &__chat{
+    @include flexbox($justify-content: flex-start);
+    width: 100%;
+    column-gap: .5rem;
+    color: $white;
+
+    &-user{
+      text-transform: capitalize;
+      font-weight: $font-bold;
+      padding: .3rem;
+      border-radius: .3rem;
+      background-color: #f98e68;
+    }
+  }
   &__footer {
     height: 2.5rem;
     width: 100%;

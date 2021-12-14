@@ -17,12 +17,16 @@ const socketApi = (server) => {
 
     socket.on("game_lobby", ({id, email, room}) => {
       socket.join(room);
-      socket.emit("message", {user: "admin", text: `${email}, welcome to room.`});
-      socket.broadcast.to(room).emit("message", {user: "admin", text: `${email}, has joined.`})
     });
+
+
+    socket.on("send_message", ({name, message, room}) => {
+      io.to(room).emit("message", {user: name, text: message})
+    })
   });
 
   return io;
 };
 
 export default socketApi;
+
