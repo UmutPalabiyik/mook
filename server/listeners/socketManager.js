@@ -15,10 +15,10 @@ const socketApi = (server) => {
       console.log(`user ${socket.id} had left`);
     });
 
-    socket.on("join", ({ name, room }) => {
-      console.log(`name: ${name} -- room: ${room} -- ${socket.id}`);
-      socket.join(room)
-      io.to(room).emit("messages")
+    socket.on("game_lobby", ({id, email, room}) => {
+      socket.join(room);
+      socket.emit("message", {user: "admin", text: `${email}, welcome to room.`});
+      socket.broadcast.to(room).emit("message", {user: "admin", text: `${email}, has joined.`})
     });
   });
 

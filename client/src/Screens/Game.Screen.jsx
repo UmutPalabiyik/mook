@@ -2,26 +2,38 @@ import { useParams } from "react-router-dom";
 import { supportedGames } from "../Utils/Constants/Constants";
 import { useState, useEffect, useContext } from "react";
 import { SocketContext } from "../Context/Socket";
+import { FaFeatherAlt } from 'react-icons/fa';
 
 const Game = () => {
   const params = useParams();
-  const gameLobby = supportedGames.find(
+  const [messages, setMessages] = useState([]);
+  const gameInfo = supportedGames.find(
     (game) => game.to.split("/").at(-1) === params.game
   );
 
-  const [name, setName] = useState("");
-  const [message, setMessage] = useState("");
+  const {_id, email} = JSON.parse(localStorage.getItem("user")).user;
+
   const socket = useContext(SocketContext);
 
-  useEffect(() => {
-    return () => {
-      socket.off("disconnect");
-    };
-  }, [socket]);
 
-  const sendMessage = () => {
-    socket.emit("join", { name, room: gameLobby.name });
-  };
+
+  useEffect(() => {
+
+    socket.emit("game_lobby", {id: _id, email, room: gameInfo.name})
+
+    return () => {
+      socket.close();
+    };
+  }, [socket, _id, email, gameInfo.name]);
+
+
+  useEffect(() => {
+    socket.on("message", ({text}) => {
+      setMessages(message => [...message, text])
+      console.log(text);
+    });
+  })
+
 
   return (
     <div className="game section">
@@ -30,36 +42,18 @@ const Game = () => {
           <ul className="game__header-list grid">
             <li className="game__header-item">Chat</li>
             <li className="game__header-item">Messages</li>
-            <li className="game__header-item">Friends</li>
+            <li className="game__header-item">Users</li>
           </ul>
         </header>
 
-        <div className="game__chat">
-          <input
-            type="text"
-            placeholder="name"
-            onChange={(e) => setName(e.target.value)}
-          />
-          <br />
-          <input
-            type="text"
-            placeholder="message"
-            onChange={(e) => setName(e.target.value)}
-          />
-          <br />
-          <button
-            style={{ display: "block", width: "100%" }}
-            onClick={sendMessage}
-            onChange={(e) => setMessage(e.target.value)}
-          >
-            Join Room
-          </button>
-
-          <div>
-            {
-              message
-            }
+        <div className="game__body">
+          <div className="game__chat">
           </div>
+        </div>
+
+        <div className="game__footer">
+          <input className="game__footer-input" type="text" placeholder="Say something..."/>
+          <FaFeatherAlt className="game__footer-icon" />
         </div>
       </div>
     </div>
@@ -67,3 +61,4 @@ const Game = () => {
 };
 
 export default Game;
+
