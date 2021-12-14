@@ -5,6 +5,7 @@ import { SocketContext } from "../Context/Socket";
 import { FaFeatherAlt } from "react-icons/fa";
 
 const Game = () => {
+ 
   const params = useParams();
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
@@ -16,17 +17,19 @@ const Game = () => {
   const { _id, email } = JSON.parse(localStorage.getItem("user")).user;
 
   const socket = useContext(SocketContext);
-  console.log(userList);
 
   useEffect(() => {
+    console.log("mount")
     socket.emit("game_lobby", { id: _id, email, room: gameInfo.name });
 
     return () => {
+      console.log("kaldirildi")
       socket.close();
     };
   }, [socket, _id, email, gameInfo.name]);
 
   useEffect(() => {
+    
     socket.on("message", ({ user, text }) => {
       setMessages((prev) => [...prev, { user, text }]);
     });
