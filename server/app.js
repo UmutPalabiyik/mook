@@ -40,7 +40,4 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-//Run server
-app.listen(process.env.PORT, () => {
-  console.log("Server is listening");
-});
+export default app;
