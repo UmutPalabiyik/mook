@@ -9,15 +9,15 @@ const socketApi = (server) => {
   });
 
   io.on("connection", (socket) => {
-    
+
 
     socket.on("disconnect", () => {
       console.log(`user ${socket.id} had left`);
     });
 
-    socket.on("game_lobby", ({id, email, room}) => {
+    socket.on("game_lobby", ({id, username, room}) => {
       console.log("We have a new connetion.");
-      socket.emit("message", {user: "Admin", text: `${email.split("@")[0]} welcome to ${room} room`})
+      socket.emit("message", {user: "Admin", text: `${username} welcome to ${room} room`})
       socket.join(room);
     });
 
