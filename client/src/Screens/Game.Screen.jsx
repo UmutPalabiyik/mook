@@ -1,44 +1,40 @@
 import { useParams } from "react-router-dom";
 import { supportedGames } from "../Utils/Constants/Constants";
-import { useState, useEffect, useContext } from "react";
-import { SocketContext } from "../Context/Socket";
+import { useState, useEffect } from "react";
+import io from "socket.io-client";
 import { FaFeatherAlt } from "react-icons/fa";
 
+let socket;
+
 const Game = () => {
- 
   const params = useParams();
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
-  const [userList, setUserlist] = useState([]);
+/*   const [userList, setUserlist] = useState([]); */
   const gameInfo = supportedGames.find(
     (game) => game.to.split("/").at(-1) === params.game
   );
 
-  const { _id, email } = JSON.parse(localStorage.getItem("user")).user;
+  const { _id, username } = JSON.parse(localStorage.getItem("user")).user;
 
-  const socket = useContext(SocketContext);
-
-  useEffect(() => {
-    console.log("mount")
-    socket.emit("game_lobby", { id: _id, email, room: gameInfo.name });
-
-    return () => {
-      console.log("kaldirildi")
-      socket.close();
-    };
-  }, [socket, _id, email, gameInfo.name]);
 
   useEffect(() => {
-    
+    socket = io(process.env.REACT_APP_BASE_URL);
+    socket.emit("game_lobby", { id: _id, username, room: gameInfo.name });
+
+    return () => socket.disconnect();
+  }, [_id, username, gameInfo.name]);
+
+  useEffect(() => {
     socket.on("message", ({ user, text }) => {
       setMessages((prev) => [...prev, { user, text }]);
     });
-  }, [socket]);
+  }, []);
 
   const sendMessage = () => {
     if (message) {
       socket.emit("send_message", {
-        name: email,
+        name: username,
         message,
         room: gameInfo.name,
       });
@@ -62,7 +58,9 @@ const Game = () => {
           {messages.map((message, key) => {
             return (
               <div className="game__chat" key={key}>
-                <div className="game__chat-user">{message.user.split("@")[0]} : </div>
+                <div className="game__chat-user">
+                  {message.user.split("@")[0]} :{" "}
+                </div>
                 <div className="game__chat-message">{message.text}</div>
               </div>
             );

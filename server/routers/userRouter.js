@@ -8,13 +8,21 @@ const router = express.Router();
 
 router.post("/signup", async (req, res) => {
   try {
-    const { email, password, repassword } = req.body;
-    const userExist = await User.findOne({ email });
+    const { username, email, password, repassword } = req.body;
+    const emailExist = await User.findOne({ email });
+    const usernameExist = await User.findOne({ username });
 
-    if (userExist) {
+    if (emailExist) {
       return res
         .status(400)
         .json({ message: "There is already a user with this email address." });
+    }
+
+
+    if (usernameExist) {
+      return res
+        .status(400)
+        .json({ message: "There is already a user with this username." });
     }
 
     if (password !== repassword) {
@@ -24,6 +32,7 @@ router.post("/signup", async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await User.create({
+      username,
       email,
       password: hashedPassword,
     });
