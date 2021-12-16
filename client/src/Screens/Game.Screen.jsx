@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { supportedGames } from "../Utils/Constants/Constants";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import io from "socket.io-client";
 import { FaFeatherAlt } from "react-icons/fa";
 
@@ -10,10 +10,15 @@ const Game = () => {
   const params = useParams();
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
-/*   const [userList, setUserlist] = useState([]); */
+  const endToMessages = useRef(null);
   const gameInfo = supportedGames.find(
     (game) => game.to.split("/").at(-1) === params.game
   );
+
+  const scrollToBttom = () => {
+    console.log("calıstı..")
+    endToMessages.current?.scrollIntoView({ behavior: "smooth" });
+  }
 
   const { _id, username } = JSON.parse(localStorage.getItem("user")).user;
 
@@ -28,8 +33,14 @@ const Game = () => {
   useEffect(() => {
     socket.on("message", ({ user, text }) => {
       setMessages((prev) => [...prev, { user, text }]);
+      scrollToBttom();
     });
+
+
   }, []);
+
+
+
 
   const sendMessage = () => {
     if (message) {
@@ -40,6 +51,7 @@ const Game = () => {
       });
 
       setMessage("");
+      
     }
   };
 
@@ -50,7 +62,6 @@ const Game = () => {
           <ul className="game__header-list grid">
             <li className="game__header-item">Chat</li>
             <li className="game__header-item">Messages</li>
-            <li className="game__header-item">Users</li>
           </ul>
         </header>
 
@@ -62,6 +73,7 @@ const Game = () => {
                   {message.user.split("@")[0]} :{" "}
                 </div>
                 <div className="game__chat-message">{message.text}</div>
+                <div ref={endToMessages}></div>
               </div>
             );
           })}

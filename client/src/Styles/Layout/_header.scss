@@ -141,7 +141,7 @@
     &__item {
       margin: 3rem 0 0 0;
       &--animation {
-        $itemCount: 3;
+        $itemCount: 4;
         $animationSpeed: 3;
         @for $i from 1 through $itemCount {
           &:nth-of-type(#{$i}) {
