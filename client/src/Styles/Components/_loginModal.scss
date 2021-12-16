@@ -63,6 +63,7 @@
     color: #ffff;
     padding: 0.7rem;
     font-size: 1rem;
+    
 
     &::placeholder {
       color: #ffff;
@@ -321,9 +322,17 @@
   }
 
   @media screen and (max-width: $smaller-screen) {
+
+    &__input{
+      font-size: 8px;
+    }
+
     &__form {
-      padding-top: .5rem;
-      row-gap: .5rem;
+      row-gap: .1rem;
+    }
+
+    &__form-button {
+      padding: 0.3rem 1.5rem;
     }
   }
 }

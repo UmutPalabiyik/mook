@@ -1,9 +1,7 @@
 .game {
-
-  $chat-radius: .3rem;
-  $chat-background: #ff6150;
-  $chat-font-color: rgb(214, 212, 212);
-
+  $chat-radius: 0.3rem;
+  $chat-background: #ee7738;
+  $chat-font-color: #d6d4d4;
 
   &__container {
     padding-top: 1rem;
@@ -37,18 +35,16 @@
     width: 100%;
     height: 55vh;
     border-radius: $chat-radius;
-    padding: 2rem .5rem 0 .5rem;
+    padding: 2rem 0.5rem 0 0.5rem;
     overflow-y: scroll;
 
-    
     &::-webkit-scrollbar {
       display: none;
     }
-
   }
 
   &__chat {
-    @include flexbox($justify-content: flex-start, $align-items: flex-start);
+    @include flexbox($justify-content: flex-start, $align-items: center);
     width: 100%;
     column-gap: 0.5rem;
     color: $chat-font-color;
@@ -58,17 +54,29 @@
     &-user {
       text-transform: capitalize;
       font-weight: $font-bold;
-      padding: 0.3rem;
+      padding: 0.5rem;
       border-radius: 0.3rem;
-      background-color: #f88478;
+      background-color: #7c73e6;
       white-space: nowrap;
       font-size: 14px;
     }
 
-    &-message{
+    &-message {
+      background-color: #7c73e6;
       font-size: 14px;
+      padding: 0.5rem;
+      border-radius: 0.5rem 0.5rem 0.5rem 0;
       font-weight: $font-bold;
-      letter-spacing: .5px;
+      letter-spacing: 0.5px;
+    }
+
+    &--self {
+      flex-direction: row-reverse;
+
+      .game__chat-message {
+        background-color: #309975;
+        border-radius: 0.5rem 0.5rem 0 0.5rem;
+      }
     }
   }
   &__footer {

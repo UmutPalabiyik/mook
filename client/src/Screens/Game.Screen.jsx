@@ -15,13 +15,11 @@ const Game = () => {
     (game) => game.to.split("/").at(-1) === params.game
   );
 
-  const scrollToBttom = () => {
-    console.log("calıstı..")
+  const scrollToBottom = () => {
     endToMessages.current?.scrollIntoView({ behavior: "smooth" });
-  }
+  };
 
   const { _id, username } = JSON.parse(localStorage.getItem("user")).user;
-
 
   useEffect(() => {
     socket = io(process.env.REACT_APP_BASE_URL);
@@ -33,14 +31,9 @@ const Game = () => {
   useEffect(() => {
     socket.on("message", ({ user, text }) => {
       setMessages((prev) => [...prev, { user, text }]);
-      scrollToBttom();
+      scrollToBottom();
     });
-
-
   }, []);
-
-
-
 
   const sendMessage = () => {
     if (message) {
@@ -51,7 +44,6 @@ const Game = () => {
       });
 
       setMessage("");
-      
     }
   };
 
@@ -66,13 +58,12 @@ const Game = () => {
         </header>
 
         <div className="game__body">
-          {messages.map((message, key) => {
+          {messages.map(({ user, text }, key) => {
+            const selfMessage = user === username ? "game__chat--self" : null;
             return (
-              <div className="game__chat" key={key}>
-                <div className="game__chat-user">
-                  {message.user.split("@")[0]} :{" "}
-                </div>
-                <div className="game__chat-message">{message.text}</div>
+              <div className={`game__chat ${selfMessage}`} key={key}>
+               {/*  <div className="game__chat-user">{user}</div> */}
+                <div className="game__chat-message">{text}</div>
                 <div ref={endToMessages}></div>
               </div>
             );
