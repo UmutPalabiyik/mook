@@ -10,6 +10,7 @@ const Game = () => {
   const params = useParams();
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
+  const [activeTab, setActiveTab] = useState(1);
   const endToMessages = useRef(null);
   const gameInfo = supportedGames.find(
     (game) => game.to.split("/").at(-1) === params.game
@@ -47,29 +48,45 @@ const Game = () => {
     }
   };
 
+  const toggleTab = (index) => {
+    setActiveTab(index);
+  };
+
+  const lobbyChat = (
+    <div className="game__lobby">
+      {messages.map(({ user, text }, key) => {
+        const selfMessage = user === username ? "game__chat--self" : null;
+        return (
+          <div className={`game__chat ${selfMessage}`} key={key}>
+            {/*  <div className="game__chat-user">{user}</div> */}
+            <div className="game__chat-message">{text}</div>
+            <div ref={endToMessages}></div>
+          </div>
+        );
+      })}
+    </div>
+  );
+
+  const directMessageChat = (
+    <div className="game__direct-message">blablabla</div>
+  );
+
+  const activeBody = activeTab === 1 ? lobbyChat : directMessageChat;
+
   return (
     <div className="game section">
       <div className="game__container container">
         <header className="game__header">
           <ul className="game__header-list grid">
-            <li className="game__header-item">Chat</li>
-            <li className="game__header-item">Messages</li>
+            <li className="game__header-item" onClick={() => toggleTab(1)}>
+              Lobby
+            </li>
+            <li className="game__header-item" onClick={() => toggleTab(2)}>
+              Messages
+            </li>
           </ul>
         </header>
-
-        <div className="game__body">
-          {messages.map(({ user, text }, key) => {
-            const selfMessage = user === username ? "game__chat--self" : null;
-            return (
-              <div className={`game__chat ${selfMessage}`} key={key}>
-               {/*  <div className="game__chat-user">{user}</div> */}
-                <div className="game__chat-message">{text}</div>
-                <div ref={endToMessages}></div>
-              </div>
-            );
-          })}
-        </div>
-
+        <div className="game__body">{activeBody}</div>
         <div className="game__footer">
           <input
             className="game__footer-input"
