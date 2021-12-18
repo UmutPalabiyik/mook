@@ -10,7 +10,7 @@ const Game = () => {
   const params = useParams();
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
-  const [activeTab, setActiveTab] = useState(1);
+  const [activeTab, setActiveTab] = useState(true);
   const endToMessages = useRef(null);
   const gameInfo = supportedGames.find(
     (game) => game.to.split("/").at(-1) === params.game
@@ -25,6 +25,8 @@ const Game = () => {
   useEffect(() => {
     socket = io(process.env.REACT_APP_BASE_URL);
     socket.emit("game_lobby", { id: _id, username, room: gameInfo.name });
+    socket.auth = {username};
+
 
     return () => socket.disconnect();
   }, [_id, username, gameInfo.name]);
@@ -36,6 +38,7 @@ const Game = () => {
     });
   }, []);
 
+  console.log(socket)
   const sendMessage = () => {
     if (message) {
       socket.emit("send_message", {
@@ -71,22 +74,32 @@ const Game = () => {
     <div className="game__direct-message">blablabla</div>
   );
 
-  const activeBody = activeTab === 1 ? lobbyChat : directMessageChat;
+  const activeContent = activeTab ? lobbyChat : directMessageChat;
 
   return (
     <div className="game section">
       <div className="game__container container">
         <header className="game__header">
           <ul className="game__header-list grid">
-            <li className="game__header-item" onClick={() => toggleTab(1)}>
+            <li
+              className={`game__header-item ${
+                activeTab ? "game__active-tab" : ""
+              }`}
+              onClick={() => toggleTab(true)}
+            >
               Lobby
             </li>
-            <li className="game__header-item" onClick={() => toggleTab(2)}>
+            <li
+              className={`game__header-item ${
+                activeTab ? "" : "game__active-tab"
+              }`}
+              onClick={() => toggleTab(false)}
+            >
               Messages
             </li>
           </ul>
         </header>
-        <div className="game__body">{activeBody}</div>
+        <div className="game__body">{activeContent}</div>
         <div className="game__footer">
           <input
             className="game__footer-input"

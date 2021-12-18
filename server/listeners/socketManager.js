@@ -8,13 +8,17 @@ const socketApi = (server) => {
     },
   });
 
+
   io.on("connection", (socket) => {
     socket.on("disconnect", () => {
       console.log(`user ${socket.id} had left`);
     });
 
+
     socket.on("game_lobby", async ({ id, username, room }) => {
-      console.log("We have a new connetion.");
+
+      const roomSockets = await io.in(room).fetchSockets()
+      roomSockets.forEach(e => console.log(e.handshake.auth))
 
       socket.join(room);
       socket.emit("message", {
@@ -32,3 +36,5 @@ const socketApi = (server) => {
 };
 
 export default socketApi;
+
+
