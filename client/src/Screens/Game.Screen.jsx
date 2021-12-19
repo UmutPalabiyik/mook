@@ -10,6 +10,7 @@ const Game = () => {
   const params = useParams();
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
+  const [lobbyList, setLobbyList] = useState([]);
   const [activeTab, setActiveTab] = useState(true);
   const endToMessages = useRef(null);
   const gameInfo = supportedGames.find(
@@ -22,13 +23,25 @@ const Game = () => {
 
   const { _id, username } = JSON.parse(localStorage.getItem("user")).user;
 
+/*   console.log(lobbyList); */
+
   useEffect(() => {
     socket = io(process.env.REACT_APP_BASE_URL);
-    socket.emit("game_lobby", { id: _id, username, room: gameInfo.name });
-    socket.auth = {username};
+    socket.emit("game_lobby", {
+      userId: _id,
+      userName: username,
+      userRoom: gameInfo.name,
+    });
 
 
-    return () => socket.disconnect();
+    return () => {
+      socket.emit("remove_user", {
+        userId: _id,
+        userName: username,
+        userRoom: gameInfo.name,
+      });
+      socket.disconnect();
+    };
   }, [_id, username, gameInfo.name]);
 
   useEffect(() => {
@@ -36,15 +49,34 @@ const Game = () => {
       setMessages((prev) => [...prev, { user, text }]);
       scrollToBottom();
     });
-  }, []);
 
-  console.log(socket)
+
+    socket.on("lobby_list", ({users}) => {
+      users.forEach( user => {
+        user.self = user.userId === _id;
+        user.connected = true;
+        user.messages = [];
+        user.hasNewMessages = false
+      });
+
+      setLobbyList(users);
+    })
+
+  }, [_id]);
+
+  useEffect(() => {
+    socket.on("disconnected_user", ({userId}) => {
+      const newLobbyList = lobbyList.filter(user => user.userId !== userId);
+      setLobbyList(newLobbyList);
+    })
+  }, [lobbyList])
+
   const sendMessage = () => {
     if (message) {
       socket.emit("send_message", {
-        name: username,
-        message,
-        room: gameInfo.name,
+        userName: username,
+        userMessage: message,
+        userRoom: gameInfo.name,
       });
 
       setMessage("");
@@ -71,8 +103,22 @@ const Game = () => {
   );
 
   const directMessageChat = (
-    <div className="game__direct-message">blablabla</div>
+    <div className="game__direct-message">
+{
+  lobbyList.map((user) => {
+    return(
+      <div>{user.userId}</div>
+    )
+  }) 
+}
+    </div>
   );
+
+  const lobbyUserList = (
+    <div className="">
+
+    </div>
+  )
 
   const activeContent = activeTab ? lobbyChat : directMessageChat;
 
@@ -122,3 +168,4 @@ const Game = () => {
 };
 
 export default Game;
+
