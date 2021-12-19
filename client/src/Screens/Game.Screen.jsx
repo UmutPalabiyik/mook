@@ -3,6 +3,9 @@ import { supportedGames } from "../Utils/Constants/Constants";
 import { useState, useEffect, useRef } from "react";
 import io from "socket.io-client";
 import { FaFeatherAlt } from "react-icons/fa";
+import GameLobbyChat from "../Components/GameLobbyChat";
+import GamePrivateChat from "../Components/GamePrivateChat";
+import GameLobbyUsers from "../Components/GameLobbyusers";
 
 let socket;
 
@@ -10,75 +13,123 @@ const Game = () => {
   const params = useParams();
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
+  const [lobbyList, setLobbyList] = useState([]);
+  const [activeTab, setActiveTab] = useState(1);
   const endToMessages = useRef(null);
   const gameInfo = supportedGames.find(
     (game) => game.to.split("/").at(-1) === params.game
   );
 
-  const scrollToBttom = () => {
-    console.log("calıstı..")
+  const scrollToBottom = () => {
     endToMessages.current?.scrollIntoView({ behavior: "smooth" });
-  }
+  };
 
   const { _id, username } = JSON.parse(localStorage.getItem("user")).user;
 
-
   useEffect(() => {
     socket = io(process.env.REACT_APP_BASE_URL);
-    socket.emit("game_lobby", { id: _id, username, room: gameInfo.name });
+    socket.emit("game_lobby", {
+      userId: _id,
+      userName: username,
+      userRoom: gameInfo.name,
+    });
 
-    return () => socket.disconnect();
+    return () => {
+      socket.emit("remove_user", {
+        userId: _id,
+        userName: username,
+        userRoom: gameInfo.name,
+      });
+      socket.disconnect();
+    };
   }, [_id, username, gameInfo.name]);
 
   useEffect(() => {
     socket.on("message", ({ user, text }) => {
       setMessages((prev) => [...prev, { user, text }]);
-      scrollToBttom();
+      scrollToBottom();
     });
 
+    socket.on("lobby_list", ({ users }) => {
+      users.forEach((user) => {
+        user.self = user.userId === _id;
+        user.connected = true;
+        user.messages = [];
+        user.hasNewMessages = false;
+      });
 
-  }, []);
+      setLobbyList(users);
+    });
+  }, [_id]);
 
-
-
+  useEffect(() => {
+    socket.on("disconnected_user", ({ userId }) => {
+      const newLobbyList = lobbyList.filter((user) => user.userId !== userId);
+      setLobbyList(newLobbyList);
+    });
+  }, [lobbyList]);
 
   const sendMessage = () => {
     if (message) {
       socket.emit("send_message", {
-        name: username,
-        message,
-        room: gameInfo.name,
+        userName: username,
+        userMessage: message,
+        userRoom: gameInfo.name,
       });
 
       setMessage("");
-      
     }
   };
+
+  const toggleTab = (index) => {
+    setActiveTab(index);
+  };
+
+  const activeContent =
+    activeTab === 1 ? (
+      <GameLobbyChat
+        messages={messages}
+        endToMessages={endToMessages}
+        username={username}
+      />
+    ) : activeTab === 2 ? (
+      <GamePrivateChat />
+    ) : activeTab === 3 ? (
+      <GameLobbyUsers lobbyList={lobbyList} />
+    ) : null;
 
   return (
     <div className="game section">
       <div className="game__container container">
         <header className="game__header">
           <ul className="game__header-list grid">
-            <li className="game__header-item">Chat</li>
-            <li className="game__header-item">Messages</li>
+            <li
+              className={`game__header-item ${
+                activeTab === 1 ? "game__active-tab" : ""
+              }`}
+              onClick={() => toggleTab(1)}
+            >
+              Lobby
+            </li>
+            <li
+              className={`game__header-item ${
+                activeTab === 2 ? "game__active-tab" : ""
+              }`}
+              onClick={() => toggleTab(2)}
+            >
+              Messages
+            </li>
+            <li
+              className={`game__header-item ${
+                activeTab === 3 ? "game__active-tab" : ""
+              }`}
+              onClick={() => toggleTab(3)}
+            >
+              Users
+            </li>
           </ul>
         </header>
-
-        <div className="game__body">
-          {messages.map((message, key) => {
-            return (
-              <div className="game__chat" key={key}>
-                <div className="game__chat-user">
-                  {message.user.split("@")[0]} :{" "}
-                </div>
-                <div className="game__chat-message">{message.text}</div>
-                <div ref={endToMessages}></div>
-              </div>
-            );
-          })}
-        </div>
-
+        <div className="game__body">{activeContent}</div>
         <div className="game__footer">
           <input
             className="game__footer-input"
