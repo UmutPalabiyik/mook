@@ -3,12 +3,13 @@ import { RiUserSearchFill } from "react-icons/ri";
 
 const GameLobbyUsers = ({ lobbyList }) => {
   const [input, setInput] = useState("");
+
   const onChangeInput = (e) => {
     setInput(e.target.value);
   };
 
   const filteredUsers = lobbyList.filter((user) =>
-    user.userName.includes(input)
+    user.userName.includes(input.toLocaleLowerCase())
   );
 
   return (
