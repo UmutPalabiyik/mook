@@ -1,0 +1,48 @@
+.game-lobby-users {
+
+  $user-background-color: #2D4263;
+
+  width: 100%;
+  @include flexbox($direction: column, $align-items: flex-start);
+
+  &__searching {
+    border-radius: 0.5rem;
+    padding: 0.4rem 1rem;
+    width: 100%;
+    @include flexbox($align-items: center, $justify-content: space-between);
+    background-color: $user-background-color;
+    margin-bottom: 1rem;
+  }
+
+  &__input {
+    color: $white;
+    background-color: transparent;
+    &::placeholder {
+      color: $white;
+      font-weight: $font-semi-bold;
+      padding-left: 0.2rem;
+    }
+  }
+
+  &__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: $white;
+  }
+
+  &__list{
+    @include flexbox($direction: column);
+    row-gap: .3rem;
+  }
+
+  &__user {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: $user-background-color;
+    color: $chat-font-color;
+    font-weight: $font-bold;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+}
+

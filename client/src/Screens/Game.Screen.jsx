@@ -3,6 +3,9 @@ import { supportedGames } from "../Utils/Constants/Constants";
 import { useState, useEffect, useRef } from "react";
 import io from "socket.io-client";
 import { FaFeatherAlt } from "react-icons/fa";
+import GameLobbyChat from "../Components/GameLobbyChat";
+import GamePrivateChat from "../Components/GamePrivateChat";
+import GameLobbyUsers from "../Components/GameLobbyusers";
 
 let socket;
 
@@ -11,7 +14,7 @@ const Game = () => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const [lobbyList, setLobbyList] = useState([]);
-  const [activeTab, setActiveTab] = useState(true);
+  const [activeTab, setActiveTab] = useState(1);
   const endToMessages = useRef(null);
   const gameInfo = supportedGames.find(
     (game) => game.to.split("/").at(-1) === params.game
@@ -23,8 +26,6 @@ const Game = () => {
 
   const { _id, username } = JSON.parse(localStorage.getItem("user")).user;
 
-/*   console.log(lobbyList); */
-
   useEffect(() => {
     socket = io(process.env.REACT_APP_BASE_URL);
     socket.emit("game_lobby", {
@@ -32,7 +33,6 @@ const Game = () => {
       userName: username,
       userRoom: gameInfo.name,
     });
-
 
     return () => {
       socket.emit("remove_user", {
@@ -50,26 +50,24 @@ const Game = () => {
       scrollToBottom();
     });
 
-
-    socket.on("lobby_list", ({users}) => {
-      users.forEach( user => {
+    socket.on("lobby_list", ({ users }) => {
+      users.forEach((user) => {
         user.self = user.userId === _id;
         user.connected = true;
         user.messages = [];
-        user.hasNewMessages = false
+        user.hasNewMessages = false;
       });
 
       setLobbyList(users);
-    })
-
+    });
   }, [_id]);
 
   useEffect(() => {
-    socket.on("disconnected_user", ({userId}) => {
-      const newLobbyList = lobbyList.filter(user => user.userId !== userId);
+    socket.on("disconnected_user", ({ userId }) => {
+      const newLobbyList = lobbyList.filter((user) => user.userId !== userId);
       setLobbyList(newLobbyList);
-    })
-  }, [lobbyList])
+    });
+  }, [lobbyList]);
 
   const sendMessage = () => {
     if (message) {
@@ -87,40 +85,18 @@ const Game = () => {
     setActiveTab(index);
   };
 
-  const lobbyChat = (
-    <div className="game__lobby">
-      {messages.map(({ user, text }, key) => {
-        const selfMessage = user === username ? "game__chat--self" : null;
-        return (
-          <div className={`game__chat ${selfMessage}`} key={key}>
-            {/*  <div className="game__chat-user">{user}</div> */}
-            <div className="game__chat-message">{text}</div>
-            <div ref={endToMessages}></div>
-          </div>
-        );
-      })}
-    </div>
-  );
-
-  const directMessageChat = (
-    <div className="game__direct-message">
-{
-  lobbyList.map((user) => {
-    return(
-      <div>{user.userId}</div>
-    )
-  }) 
-}
-    </div>
-  );
-
-  const lobbyUserList = (
-    <div className="">
-
-    </div>
-  )
-
-  const activeContent = activeTab ? lobbyChat : directMessageChat;
+  const activeContent =
+    activeTab === 1 ? (
+      <GameLobbyChat
+        messages={messages}
+        endToMessages={endToMessages}
+        username={username}
+      />
+    ) : activeTab === 2 ? (
+      <GamePrivateChat />
+    ) : activeTab === 3 ? (
+      <GameLobbyUsers lobbyList={lobbyList} />
+    ) : null;
 
   return (
     <div className="game section">
@@ -129,19 +105,27 @@ const Game = () => {
           <ul className="game__header-list grid">
             <li
               className={`game__header-item ${
-                activeTab ? "game__active-tab" : ""
+                activeTab === 1 ? "game__active-tab" : ""
               }`}
-              onClick={() => toggleTab(true)}
+              onClick={() => toggleTab(1)}
             >
               Lobby
             </li>
             <li
               className={`game__header-item ${
-                activeTab ? "" : "game__active-tab"
+                activeTab === 2 ? "game__active-tab" : ""
               }`}
-              onClick={() => toggleTab(false)}
+              onClick={() => toggleTab(2)}
             >
               Messages
+            </li>
+            <li
+              className={`game__header-item ${
+                activeTab === 3 ? "game__active-tab" : ""
+              }`}
+              onClick={() => toggleTab(3)}
+            >
+              Users
             </li>
           </ul>
         </header>
@@ -168,4 +152,3 @@ const Game = () => {
 };
 
 export default Game;
-
