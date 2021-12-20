@@ -9,7 +9,7 @@ import GameLobbyUsers from "../Components/GameLobbyusers";
 
 let socket;
 
-const Game = () => {
+const GameLobby = () => {
   const params = useParams();
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
@@ -99,29 +99,29 @@ const Game = () => {
     ) : null;
 
   return (
-    <div className="game section">
-      <div className="game__container container">
-        <header className="game__header">
-          <ul className="game__header-list grid">
+    <div className="game-lobby section">
+      <div className="game-lobby__container container">
+        <header className="game-lobby__header">
+          <ul className="game-lobby__header-list grid">
             <li
-              className={`game__header-item ${
-                activeTab === 1 ? "game__active-tab" : ""
+              className={`game-lobby__header-item ${
+                activeTab === 1 ? "game-lobby__active-tab" : ""
               }`}
               onClick={() => toggleTab(1)}
             >
               Lobby
             </li>
             <li
-              className={`game__header-item ${
-                activeTab === 2 ? "game__active-tab" : ""
+              className={`game-lobby__header-item ${
+                activeTab === 2 ? "game-lobby__active-tab" : ""
               }`}
               onClick={() => toggleTab(2)}
             >
               Messages
             </li>
             <li
-              className={`game__header-item ${
-                activeTab === 3 ? "game__active-tab" : ""
+              className={`game-lobby__header-item ${
+                activeTab === 3 ? "game-lobby__active-tab" : ""
               }`}
               onClick={() => toggleTab(3)}
             >
@@ -129,10 +129,10 @@ const Game = () => {
             </li>
           </ul>
         </header>
-        <div className="game__body">{activeContent}</div>
-        <div className="game__footer">
+        <div className="game-lobby__body">{activeContent}</div>
+        <div className="game-lobby__footer">
           <input
-            className="game__footer-input"
+            className="game-lobby__footer-input"
             type="text"
             value={message}
             placeholder="Say something..."
@@ -142,7 +142,7 @@ const Game = () => {
             }
           />
           <FaFeatherAlt
-            className="game__footer-icon"
+            className="game-lobby__footer-icon"
             onClick={() => sendMessage(message)}
           />
         </div>
@@ -151,4 +151,4 @@ const Game = () => {
   );
 };
 
-export default Game;
+export default GameLobby;

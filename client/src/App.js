@@ -2,14 +2,14 @@ import { useState } from "react";
 import "./App.scss";
 import Header from "./Components/Header";
 import Home from "./Container/Home";
-import SupportedGames from "./Container/SupportedGames";
 import "./Styles/main.scss";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
-import Game from "./Screens/Game.Screen";
+import GameLobby from "./Screens/GameLobby.Screen";
 import ScrollToTop from "./Utils/Helpers/ScrollToTop";
-
-
+import Games from "./Screens/Games.Screen";
+import PrivateRoute from "./Utils/Helpers/PrivateRoute";
+import isLoggedIn from "./Utils/Helpers/isLoggedIn.helpers";
 
 const App = () => {
   const [showModal, setShowModal] = useState(false);
@@ -18,7 +18,6 @@ const App = () => {
   };
 
   return (
-
     <div className="app">
       <Router>
         <ScrollToTop>
@@ -34,7 +33,6 @@ const App = () => {
                   />
                   <main className="main">
                     <Home />
-                    <SupportedGames />
                   </main>
                 </>
               }
@@ -47,15 +45,32 @@ const App = () => {
                     toggleModalShow={toggleModalShow}
                     showModal={showModal}
                   />
-                  <Game />
+                  <GameLobby />
                 </>
               }
             />
+
+            <Route
+              path="/games"
+              element={<PrivateRoute isLoggedIn={isLoggedIn} />}
+            >
+              <Route
+                path="/games"
+                element={
+                  <>
+                    <Header
+                      toggleModalShow={toggleModalShow}
+                      showModal={showModal}
+                    />
+                    <Games />
+                  </>
+                }
+              />
+            </Route>
           </Routes>
         </ScrollToTop>
       </Router>
     </div>
-
   );
 };
 

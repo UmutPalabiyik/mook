@@ -5,7 +5,7 @@ const SupportedGames = () => {
   return (
     <section className="supported-games">
       <div className="supported-games__container container">
-        <h2 className="supported-games__title">Supported Games</h2>
+        <h2 className="supported-games__title">Games</h2>
         <div className="supported-games__games">
           {supportedGames.map((gameCard) => {
             return <SupportedGameCard gameCard={gameCard} key={gameCard.id} />;

@@ -1,4 +1,11 @@
 .supported-games {
+  height: 100vh;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   &__title {
     font-size: $biggest-font-size;
     color: $title-color;
@@ -10,47 +17,35 @@
 
   &__games {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    column-gap: 0.5rem;
-    overflow-x: scroll;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 0.75rem;
+    row-gap: 1rem;
     margin-top: 1.5rem;
+    
     &::-webkit-scrollbar {
       display: none;
     }
   }
-}
 
-@media screen and (max-width: $small-screen){
-    .supported-games {
-        &__games{
-            grid-template-columns: repeat(8, 1fr);
-            display: grid;
-        }
-    }
-}
-
-
-@media screen and (min-width: $small-screen){
-    .supported-games {
-        &__games{
-            grid-template-columns: repeat(4, 1fr);
-            column-gap: 1rem;
-            row-gap: 1rem;
-        }
+  @media screen and (min-width: $small-screen) {
+    &__games {
+      grid-template-columns: repeat(3, 1fr);
     }
 
-}
-
-
-@media screen and (min-width: $large-screen){
-    .supported-games {
-        &__games{
-            grid-template-columns: repeat(4, 1fr);
-        }
-
-        &__title{
-            font-size: $mega-font-size;
-        }
+    &__title {
+      font-size: $mega-font-size;
     }
+  }
 
+  @media screen and (min-width: $medium-screen) {
+    &__games {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media screen and (min-width: $large-screen) {
+    &__games {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
 }
