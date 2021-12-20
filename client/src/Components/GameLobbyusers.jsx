@@ -25,7 +25,7 @@ const GameLobbyUsers = ({ lobbyList }) => {
       </div>
       <ul className="game-lobby-users__list">
         {filteredUsers.map((user) => {
-          const { userName, userId } = user;
+          const { userName } = user;
           return (
             <li className="game-lobby-users__user">
               <div className="game-lobby-users__name">{userName}</div>

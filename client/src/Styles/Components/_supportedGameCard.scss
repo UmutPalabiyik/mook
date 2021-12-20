@@ -1,35 +1,188 @@
-.supported-game-card{
+.supported-game-card {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  box-shadow: 0 0 5px rgb(0, 0, 0);
 
-    background-color: #2e383f;
-    border-radius: 1rem;
-    transition: .5s all;
-    
-    &__container{
-        width: 250px;
-        height: 60px;
-        @include flexbox();
-        column-gap: 1rem;
+  &:hover img {
+    transform: scale(1.1);
+    opacity: 0.05;
+  }
+
+  &:hover &__separator {
+    width: 75%;
+  }
+
+  &:hover &__name {
+    animation: slideUp 0.5s ease;
+  }
+
+  &:hover &__kinds {
+    animation: slideUp 0.5s ease;
+  }
+
+  &__img {
+    position: absolute;
+    border-radius: 0.25rem;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s;
+  }
+
+  &__overlay {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__kinds {
+    @include flexbox($align-items: flex-start, $justify_content: flex-start);
+    flex-wrap: wrap;
+    row-gap: 0.75rem;
+  }
+
+  &__kind {
+    color: $white;
+    font-size: $smaller-font-size;
+    padding: 0.25rem 0.5rem;
+    margin-left: 0.25rem;
+    border-radius: 0.75rem;
+
+    &--action {
+      background-color: #ffbd35;
     }
 
-    &__name{
-        color: $white;
-        font-weight: $font-semi-bold;
-        letter-spacing: .75px;
+    &--moba {
+      background-color: #3fa796;
     }
 
-    &:hover{
-        transform: scale(1.02);
-        background-color: #2e383fe0;
+    &--survival {
+      background-color: #8267be;
     }
-}
 
-
-
-
-@media screen and (min-width: $medium-screen){
-    .supported-game-card {
-        &__container{
-            margin: 0 auto;
-        }
+    &--shooter {
+      background-color: #9b0000;
     }
+
+    &--rpg {
+      background-color: #00a19d;
+    }
+
+    &--adventure {
+      background-color: #99a799;
+    }
+
+    &--fps {
+      background-color: #344cb7;
+    }
+
+    &--simulation {
+      background-color: #009dae;
+    }
+
+    &--sport {
+      background-color: #3b185f;
+    }
+
+    &--strategy {
+      background-color: #864879;
+    }
+
+    &--card {
+      background-color: #e26a2c;
+    }
+
+    &--mmo {
+      background-color: #a2d2ff;
+    }
+
+    &--driving {
+      background-color: #b24080;
+    }
+
+    &--arcade {
+      background-color: #77d970;
+    }
+
+    &--horror{
+      background-color: #4F0E0E;
+    }
+
+    &--indie{
+      background-color: #046582;
+    }
+
+    &--open{
+      background-color: #F14668;
+    }
+
+    &--platformer{
+      background-color: #4A47A3;
+    }
+  }
+
+  &__container {
+    width: 100%;
+    padding: 0.3rem 0.1rem 0 0.25rem;
+    @include flexbox(
+      $direction: column,
+      $justify_content: flex-start,
+      $align-items: flex-start
+    );
+    row-gap: 0.75rem;
+  }
+
+  &__name {
+    font-weight: $font-semi-bold;
+    font-size: $normal-font-size;
+    letter-spacing: 1px;
+    color: $white;
+  }
+
+  &__separator {
+    height: 1.5px;
+    width: 0%;
+    align-self: flex-start;
+    background-color: #fff;
+    transition: all 0.5s ease-in-out;
+  }
+
+  @keyframes slideUp {
+    0% {
+      transform: translateY(50px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  @media screen and (min-width: $smaller-screen) {
+    height: 275px;
+
+    &__overlay {
+      justify-content: center;
+    }
+
+    &__container {
+      row-gap: 1.5rem;
+    }
+
+    &__name {
+      font-size: $big-font-size;
+    }
+
+    &__kind {
+      font-size: $small-font-size;
+    }
+  }
+
+  @media screen and (min-width: $small-screen) {
+    height: 300px;
+  }
+
+  @media screen and (min-width: $x-large-screen) {
+    height: 325px;
+  }
 }

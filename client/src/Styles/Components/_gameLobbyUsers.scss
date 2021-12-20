@@ -17,6 +17,7 @@
   &__input {
     color: $white;
     background-color: transparent;
+    width: 100%;
     &::placeholder {
       color: $white;
       font-weight: $font-semi-bold;

@@ -37,8 +37,17 @@
     cursor: pointer;
     font-weight: 700;
 
+    & span{
+      display: inline-block;
+      transition: .3s all;
+    }
     &:hover {
       letter-spacing: 5px;
+    }
+
+    &:hover span{
+      margin-left: .15rem;
+      transform: rotate(20deg);
     }
   }
 
@@ -72,9 +81,10 @@
       }
     }
 
-    &__logo {
+    &__logo{
       font-size: 2.5rem;
     }
+    
   }
 
   @media screen and (max-width: $small-screen) {

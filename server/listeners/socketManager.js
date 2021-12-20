@@ -35,7 +35,7 @@ const socketApi = (server) => {
       io.to(userRoom).emit("message", { user: userName, text: userMessage });
     });
 
-    // When user disconnect it emits discnnected user id to all socket to update user list 
+      // When user disconnect it emits discnnected user id to all socket to update user list 
     socket.on("remove_user", ({ userId, userName, userRoom }) => {
       lobbyList.removeUser(userId);
       io.to(userRoom).emit("disconnected_user", { userId });
