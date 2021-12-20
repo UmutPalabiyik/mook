@@ -10,6 +10,7 @@ import ScrollToTop from "./Utils/Helpers/ScrollToTop";
 import Games from "./Screens/Games.Screen";
 import PrivateRoute from "./Utils/Helpers/PrivateRoute";
 import isLoggedIn from "./Utils/Helpers/isLoggedIn.helpers";
+import Account from "./Screens/Account.Screen";
 
 const App = () => {
   const [showModal, setShowModal] = useState(false);
@@ -21,16 +22,13 @@ const App = () => {
     <div className="app">
       <Router>
         <ScrollToTop>
+          <Header toggleModalShow={toggleModalShow} showModal={showModal} />
           <Routes>
             <Route
               exact
               path="/"
               element={
                 <>
-                  <Header
-                    toggleModalShow={toggleModalShow}
-                    showModal={showModal}
-                  />
                   <main className="main">
                     <Home />
                   </main>
@@ -41,10 +39,6 @@ const App = () => {
               path="/games/:game"
               element={
                 <>
-                  <Header
-                    toggleModalShow={toggleModalShow}
-                    showModal={showModal}
-                  />
                   <GameLobby />
                 </>
               }
@@ -58,11 +52,21 @@ const App = () => {
                 path="/games"
                 element={
                   <>
-                    <Header
-                      toggleModalShow={toggleModalShow}
-                      showModal={showModal}
-                    />
                     <Games />
+                  </>
+                }
+              />
+            </Route>
+
+            <Route
+              path="/account"
+              element={<PrivateRoute isLoggedIn={isLoggedIn} />}
+            >
+              <Route
+                path="/account"
+                element={
+                  <>
+                    <Account />
                   </>
                 }
               />
