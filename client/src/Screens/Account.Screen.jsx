@@ -1,6 +1,10 @@
 const Account = () => {
     return(
-        <div className="section">asdsad</div>
+        <div className="account section">
+            <div className="account container container">
+                    asdas
+            </div>
+        </div>
     )
 }
 

@@ -11,7 +11,7 @@
   }
 
   &:hover &__separator {
-    width: 75%;
+    width: 85%;
   }
 
   &:hover &__name {
@@ -24,7 +24,7 @@
 
   &__img {
     position: absolute;
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
     top: 0;
     left: 0;
     width: 100%;
@@ -120,6 +120,18 @@
 
     &--platformer{
       background-color: #4A47A3;
+    }
+
+    &--battle{
+      background-color: #781D42;
+    }
+
+    &--mobile{
+      background-color: #519259;
+    }
+
+    &--rts{
+      background-color: #FC997C;
     }
   }
 

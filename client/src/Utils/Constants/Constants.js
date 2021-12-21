@@ -59,7 +59,7 @@ export const supportedGames = [
     id: 8,
     name: "Valorant",
     to: "/games/valorant",
-    kinds: ["Shooter", "FPS", ],
+    kinds: ["Shooter", "FPS"],
     background:
       "https://ik.imagekit.io/t5nhryfqbdr/valorant_bg_5aqn0A5-TV.jpg?updatedAt=1639948201424",
   },
@@ -190,5 +190,92 @@ export const supportedGames = [
     kinds: ["Shooter", "FPS", "Indie", "Action"],
     background:
       "https://ik.imagekit.io/t5nhryfqbdr/pubg_battlegrounds_bg_-kZUDAjK9.jpg?updatedAt=1639948198548",
+  },
+  {
+    id: 25,
+    name: "Overwatch",
+    to: "/overwatch",
+    kinds: ["Shooter", "FPS", "Strategy", "Action"],
+    background:
+      "https://ik.imagekit.io/t5nhryfqbdr/overwatch_bg_VPdDuSupAs3.jpg?updatedAt=1640047472559",
+  },
+  {
+    id: 26,
+    name: "Naraka Bladepoint",
+    to: "/games/naraka_bladepoint",
+    kinds: ["Battle Royal", "Action"],
+    background:
+      "https://ik.imagekit.io/t5nhryfqbdr/naraka_bladepoint_bg_z-oZEU4yVq.jpg?updatedAt=1640047472096",
+  },
+  {
+    id: 27,
+    name: "Hearth Stone",
+    to: "/games/hearth_stone",
+    kinds: ["Card", "Strategy"],
+    background:
+      "https://ik.imagekit.io/t5nhryfqbdr/hearth_stone_bg_ThstvRqGL.jpg?updatedAt=1640047472746",
+  },
+  {
+    id: 28,
+    name: "Destiny 2",
+    to: "/destiny_2",
+    kinds: ["Shooter", "FPS", "RPG", "Adventure", "MMO"],
+    background:
+      "https://ik.imagekit.io/t5nhryfqbdr/destiny_2_bg_eh_q84lR7AT.jpg?updatedAt=1640047472366",
+  },
+  {
+    id: 29,
+    name: "Age of Empire 4",
+    to: "/games/age_of_empire_4",
+    kinds: ["RTS", "Strategy"],
+    background:
+      "https://ik.imagekit.io/t5nhryfqbdr/age_of_empires_4_bg_4BRSI_Pxq.jpg?updatedAt=1640047472956",
+  },
+  {
+    id: 30,
+    name: "Escape from Tarkov",
+    to: "/escape_from_tarkov",
+    kinds: ["Simulation", "FPS", "Shooter", "RPG", "MMO"],
+    background:
+      "https://ik.imagekit.io/t5nhryfqbdr/escape_from_tarkov_bg_ZjFy30QbMtk.jpg?updatedAt=1640047471367",
+  },
+  {
+    id: 31,
+    name: "Ark Survival Evolved",
+    to: "/ark_survival_evolved",
+    kinds: ["Adventure", "FPS", "Shooter", "RPG", "MMO"],
+    background:
+      "https://ik.imagekit.io/t5nhryfqbdr/ark_survival_evolved_bg_b3Wt-3OGE4.jpg?updatedAt=1640047471924",
+  },
+  {
+    id: 32,
+    name: "Roblox",
+    to: "/roblox",
+    kinds: [
+      "Simulation",
+      "FPS",
+      "Adventure",
+      "Action",
+      "Platformer",
+      "Open Word",
+    ],
+    background:
+      "https://ik.imagekit.io/t5nhryfqbdr/roblox_bg_p67qUohZQ.jpg?updatedAt=1640047471650",
+  },
+  {
+    id: 33,
+    name: "Day Z",
+    to: "/day_z",
+    kinds: ["Simulation", "FPS", "Shooter", "Adventure", "Indie"],
+    background:
+      "https://ik.imagekit.io/t5nhryfqbdr/day_z_bg_50INrUYQF.jpg?updatedAt=1640047471437",
+  },
+  {
+    id: 34,
+    name: "Garena Free Fire",
+    to: "/garena_free_fire",
+    kinds: ["Mobile", "Adventure", "Action"],
+    background:
+      "https://ik.imagekit.io/t5nhryfqbdr/free_fire_bg_kvraqdRUY.jpg?updatedAt=1640047471394",
   },
 ];
