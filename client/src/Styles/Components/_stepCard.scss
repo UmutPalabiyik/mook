@@ -1,13 +1,21 @@
 .step-card {
-  width: 190px;
-  height: 190px;
+  width: 175px;
+  height: 175px;
   padding: 0.5rem;
-  background-color: #864848;
   @include flexbox();
   position: relative;
   cursor: pointer;
-  border-radius: 0.5rem;
-  /* box-shadow: 3px 0px 14px 0px rgba(0, 0, 0, 0.75); */
+  border-radius: 0.25rem;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.8);
+
+  &:hover &__id {
+    color: rgba(255, 255, 255, 0.75);
+    transform: scale(1.1);
+  }
+
+  &:hover &__title {
+    transform: scale(1.1);
+  }
 
   &__id {
     position: absolute;
@@ -15,34 +23,48 @@
     top: -1rem;
     font-size: 6rem;
     color: rgba(255, 255, 255, 0.15);
+    transition: all 0.5s;
   }
 
-  &::after,&::before{
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+  &__title {
+    color: $white;
+    font-size: 1.6rem;
+    font-weight: $font-semi-bold;
+    text-align: center;
+    letter-spacing: 1px;
+    transition: all 0.5s;
+
   }
 
-  @media screen and (min-width: $smaller-screen) {
-    width: 210px;
-    height: 210px;
+  &--first {
+    background-color: #7c83fd;
   }
 
-  @media screen and (min-width: $medium-screen) {
-    width: 300px;
-    height: 300px;
+  &--second {
+    background-color: #de8971;
+  }
+
+  &--third {
+    background-color: #5f939a;
   }
 
   @media screen and (min-width: $small-screen) {
+    width: 200px;
+    height: 200px;
+  }
+
+  @media screen and (min-width: $medium-screen) {
+    width: 225px;
+    height: 225px;
+  }
+
+  @media screen and (min-width: $large-screen) {
     width: 250px;
     height: 250px;
   }
 
-  @media screen and (min-width: $medium-screen) {
-    width: 300px;
-    height: 300px;
+  @media screen and (min-width: $x-large-screen) {
+    width: 275px;
+    height: 275px;
   }
 }

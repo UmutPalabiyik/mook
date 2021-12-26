@@ -283,14 +283,17 @@ export const supportedGames = [
 
 export const stepCardInfos = [
   {
+    cardName: "first",
     cardId: 1,
     cardTitle: "Sign Up"
   },
   {
+    cardName: "second",
     cardId: 2,
     cardTitle: "Choose your game"
   },
   {
+    cardName: "third",
     cardId: 3,
     cardTitle: "Join the fellowship"
   },

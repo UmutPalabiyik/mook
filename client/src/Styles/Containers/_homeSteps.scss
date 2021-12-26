@@ -2,17 +2,26 @@
   &__container {
     @include flexbox();
     flex-wrap: wrap;
-    padding: 0 0 3rem;
-    gap: 1rem;
+    padding: 1rem 0 3rem;
+    gap: 1.25rem;
   }
 
   @media screen and (min-width: $small-screen) {
     padding: 1.5rem 0 3rem;
+    &__container {
+      gap: 1.5rem;
+    }
   }
 
   @media screen and (min-width: $medium-screen) {
     &__container {
-      column-gap: 3rem;
+      gap: 2rem;
+    }
+  }
+
+  @media screen and (min-width: $x-large-screen) {
+    &__container {
+      gap: 2.5rem;
     }
   }
 }

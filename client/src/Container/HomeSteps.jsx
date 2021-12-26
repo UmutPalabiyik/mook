@@ -6,9 +6,9 @@ const HomeSteps = () => {
     <section className="home-steps">
       <div className="home-steps__container grid">
         {stepCardInfos.map((card) => {
-          const { cardId, cardTitle } = card;
+          const { cardId, cardTitle, cardName } = card;
           return (
-            <StepCard cardId={cardId} cardTitle={cardTitle} key={cardId} />
+            <StepCard cardId={cardId} cardTitle={cardTitle} cardName={cardName} key={cardId} />
           );
         })}
       </div>
