@@ -2,10 +2,10 @@ import {
   star_wars_jedi_fallen_order,
   gta_5,
 } from "../Utils/Helpers/Images.helpers";
+import HomeSteps from "./HomeSteps";
 
 const Home = () => {
   return (
-
     <section className="home section">
       <div className="home__container grid container">
         <div className="home__row grid">
@@ -51,8 +51,7 @@ const Home = () => {
             </p>
           </div>
         </div>
-
-        
+        <HomeSteps />
       </div>
     </section>
   );
