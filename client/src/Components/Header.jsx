@@ -47,6 +47,11 @@ const Header = ({ toggleModalShow, showModal }) => {
         </NavLink>
       </li>
       <li className={`header__item  ${burgerListItemAnimation}`}>
+        <NavLink className="header__link" to="/">
+          <span className="header__text">Jobs</span>
+        </NavLink>
+      </li>
+      <li className={`header__item  ${burgerListItemAnimation}`}>
         <NavLink
           className="header__text header__login"
           onClick={showModalButton}

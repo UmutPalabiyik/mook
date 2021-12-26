@@ -35,6 +35,8 @@ const GameLobby = () => {
     });
 
     return () => {
+      
+      // It sends disconnected user id to server
       socket.emit("remove_user", {
         userId: _id,
         userName: username,
