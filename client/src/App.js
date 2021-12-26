@@ -11,6 +11,8 @@ import Games from "./Screens/Games.Screen";
 import PrivateRoute from "./Utils/Helpers/PrivateRoute";
 import isLoggedIn from "./Utils/Helpers/isLoggedIn.helpers";
 import Account from "./Screens/Account.Screen";
+import Footer from "./Container/Footer";
+
 
 const App = () => {
   const [showModal, setShowModal] = useState(false);
@@ -31,6 +33,7 @@ const App = () => {
                 <>
                   <main className="main">
                     <Home />
+                    <Footer />
                   </main>
                 </>
               }
