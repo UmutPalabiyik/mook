@@ -35,6 +35,11 @@
     border-radius: 1.75rem;
     column-gap: 5px;
     cursor: pointer;
+    transition: all 0.5s;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
   }
 
   &__icon {
