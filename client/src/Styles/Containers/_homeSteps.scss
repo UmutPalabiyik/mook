@@ -1,12 +1,11 @@
 .home-steps {
   &__container {
-    padding: 0 0 4rem;
     grid-template-columns: repeat(2, 1fr);
   }
 
   &__container {
     @media screen and (min-width: $small-screen) {
-      padding: 3rem 2rem 3rem;
+      padding: 3rem 2rem 0;
       grid-template-columns: repeat(3, 1fr);
     }
   }
