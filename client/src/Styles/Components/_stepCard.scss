@@ -1,6 +1,6 @@
 .step-card {
-  width: 175px;
-  height: 175px;
+  width: 125px;
+  height: 125px;
   padding: 0.5rem;
   @include flexbox();
   position: relative;
@@ -28,29 +28,37 @@
 
   &__title {
     color: $white;
-    font-size: 1.6rem;
+    font-size: $big-font-size;
     font-weight: $font-semi-bold;
     text-align: center;
     letter-spacing: 1px;
     transition: all 0.5s;
-
   }
 
   &--first {
-    background-color: #7c83fd;
+    background-color: #325288;
   }
 
   &--second {
-    background-color: #de8971;
+    background-color: #ff7b54;
   }
 
   &--third {
-    background-color: #5f939a;
+    background-color: #1e6f5c;
+  }
+
+  @media screen and (min-width: $smaller-screen) {
+    width: 150px;
+    height: 150px;
   }
 
   @media screen and (min-width: $small-screen) {
     width: 200px;
     height: 200px;
+
+    &__title {
+      font-size: 1.6rem;
+    }
   }
 
   @media screen and (min-width: $medium-screen) {
