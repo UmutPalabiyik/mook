@@ -279,3 +279,22 @@ export const supportedGames = [
       "https://ik.imagekit.io/t5nhryfqbdr/free_fire_bg_kvraqdRUY.jpg?updatedAt=1640047471394",
   },
 ];
+
+
+export const stepCardInfos = [
+  {
+    cardName: "first",
+    cardId: 1,
+    cardTitle: "Sign Up"
+  },
+  {
+    cardName: "second",
+    cardId: 2,
+    cardTitle: "Choose your game"
+  },
+  {
+    cardName: "third",
+    cardId: 3,
+    cardTitle: "Join the fellowship"
+  },
+]

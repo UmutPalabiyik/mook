@@ -36,11 +36,28 @@
     color: $white;
     background-color: $title-color;
     font-weight: $font-semi-bold;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.6px;
     transition: 0.5s transform;
 
     &:hover {
       transform: translateY(-0.5rem);
+    }
+  }
+  
+
+  @media screen and (min-width: $large-screen) {
+    &__title {
+      font-size: $mega-font-size;
+      margin-bottom: 1.5rem;
+    }
+
+    &__description {
+      margin-bottom: 1.5rem;
+      line-height: 1.5rem;
+    }
+
+    &__container {
+      row-gap: 3rem;
     }
   }
 }

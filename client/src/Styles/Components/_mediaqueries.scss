@@ -44,21 +44,7 @@
 
 // Large Devices
 @media screen and (min-width: $large-screen) {
-  .home {
-    &__title {
-      font-size: $mega-font-size;
-      margin-bottom: 1.5rem;
-    }
 
-    &__description {
-      margin-bottom: 1.5rem;
-      line-height: 1.5rem;
-    }
-
-    &__container {
-      row-gap: 3rem;
-    }
-  }
 }
 
 // X-Large Devices

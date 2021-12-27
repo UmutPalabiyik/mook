@@ -1,0 +1,73 @@
+.step-card {
+  height: 150px;
+  padding: 0.5rem;
+  @include flexbox();
+  position: relative;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.8);
+
+  &:last-child {
+    grid-column-start: span 2;
+  }
+
+  &:hover &__id {
+    color: rgba(255, 255, 255, 0.75);
+    transform: scale(1.1);
+  }
+
+  &:hover &__title {
+    transform: scale(1.1);
+  }
+
+  &__id {
+    position: absolute;
+    right: 5px;
+    top: 0;
+    font-size: 4rem;
+    color: rgba(255, 255, 255, 0.15);
+    transition: all 0.5s;
+  }
+
+  &__title {
+    color: $white;
+    font-size: $big-font-size;
+    font-weight: $font-semi-bold;
+    text-align: center;
+    letter-spacing: 1px;
+    transition: all 0.5s;
+  }
+
+  &--first {
+    background-color: #325288;
+  }
+
+  &--second {
+    background-color: #ff7b54;
+  }
+
+  &--third {
+    background-color: #1e6f5c;
+  }
+
+  @media screen and (min-width: $small-screen) {
+    &__id {
+      top: -1rem;
+      font-size: 6rem;
+    }
+
+    &:last-child {
+      grid-column-start: span 1;
+    }
+  }
+
+  @media screen and (min-width: $large-screen) {
+    &__id {
+      font-size: 8rem;
+    }
+
+    &__title {
+      font-size: $biggest-font-size;
+    }
+  }
+}

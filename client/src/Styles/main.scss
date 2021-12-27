@@ -1,7 +1,6 @@
 // Layout
 @import "Layout/header";
 @import "Layout/layout";
-@import "Layout/home";
 @import "Layout/About";
 @import "Layout/supportedGames";
 
@@ -13,11 +12,14 @@
 @import "Components/gameLobbyChat";
 @import "Components/gameLobbyUsers";
 @import "Components/loaders";
+@import "Components/stepCard";
 
 // Containers
 @import "Containers/footer";
+@import "Containers/homeSteps";
 
 // Screens
+@import "Layout/home";
 @import "Screens/gameLobby";
 
 // Abstracts

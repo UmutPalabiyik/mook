@@ -97,7 +97,6 @@ const Header = ({ toggleModalShow, showModal }) => {
   );
 
   const renewAccessToken = useCallback(
-    
     async (id) => {
       await dispatch(userRefreshAccessToken({ id }));
       setUser(JSON.parse(localStorage.getItem("user")));
@@ -117,13 +116,13 @@ const Header = ({ toggleModalShow, showModal }) => {
         const decodedAccessToken = decode(accessToken);
 
         if (decodedAccessToken.exp * 1000 < new Date().getTime()) {
-          renewAccessToken(userId)
+          renewAccessToken(userId);
         }
       }
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [location, user, renewAccessToken, userId ]);
+  }, [location, user, renewAccessToken, userId]);
 
   return (
     <header className="header">
