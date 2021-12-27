@@ -8,7 +8,12 @@ const HomeSteps = () => {
         {stepCardInfos.map((card) => {
           const { cardId, cardTitle, cardName } = card;
           return (
-            <StepCard cardId={cardId} cardTitle={cardTitle} cardName={cardName} key={cardId} />
+            <StepCard
+              cardId={cardId}
+              cardTitle={cardTitle}
+              cardName={cardName}
+              key={cardId}
+            />
           );
         })}
       </div>

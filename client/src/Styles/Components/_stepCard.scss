@@ -1,12 +1,15 @@
 .step-card {
-  width: 125px;
-  height: 125px;
+  height: 150px;
   padding: 0.5rem;
   @include flexbox();
   position: relative;
   cursor: pointer;
   border-radius: 0.25rem;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.8);
+
+  &:last-child {
+    grid-column-start: span 2;
+  }
 
   &:hover &__id {
     color: rgba(255, 255, 255, 0.75);
@@ -20,8 +23,8 @@
   &__id {
     position: absolute;
     right: 5px;
-    top: -1rem;
-    font-size: 6rem;
+    top: 0;
+    font-size: 4rem;
     color: rgba(255, 255, 255, 0.15);
     transition: all 0.5s;
   }
@@ -47,32 +50,24 @@
     background-color: #1e6f5c;
   }
 
-  @media screen and (min-width: $smaller-screen) {
-    width: 150px;
-    height: 150px;
-  }
-
   @media screen and (min-width: $small-screen) {
-    width: 200px;
-    height: 200px;
+    &__id {
+      top: -1rem;
+      font-size: 6rem;
+    }
 
-    &__title {
-      font-size: 1.6rem;
+    &:last-child {
+      grid-column-start: span 1;
     }
   }
 
-  @media screen and (min-width: $medium-screen) {
-    width: 225px;
-    height: 225px;
-  }
-
   @media screen and (min-width: $large-screen) {
-    width: 250px;
-    height: 250px;
-  }
+    &__id {
+      font-size: 8rem;
+    }
 
-  @media screen and (min-width: $x-large-screen) {
-    width: 275px;
-    height: 275px;
+    &__title {
+      font-size: $biggest-font-size;
+    }
   }
 }

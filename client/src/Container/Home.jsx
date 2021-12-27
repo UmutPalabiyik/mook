@@ -8,6 +8,7 @@ const Home = () => {
   return (
     <section className="home section">
       <div className="home__container grid container">
+
         <div className="home__row grid">
           <img
             className="home__img section__img home__img--order home__img--flip"
@@ -51,7 +52,9 @@ const Home = () => {
             </p>
           </div>
         </div>
+
         <HomeSteps />
+        
       </div>
     </section>
   );
