@@ -1,0 +1,101 @@
+.mobile-tablet-app {
+  &__container {
+    padding: 2rem 0 4rem;
+  }
+
+  &__svg {
+    fill: $first-color;
+  }
+
+  &__title {
+    color: $title-color;
+    font-size: $biggest-font-size;
+    font-weight: $font-bold;
+    letter-spacing: 1px;
+    margin-bottom: 0.75rem;
+  }
+
+  &__description {
+    color: $white;
+    font-size: $small-font-size;
+    line-height: 1.7rem;
+    margin-bottom: 1rem;
+    font-family: "Poppins", sans-serif;
+  }
+
+  &__button-container {
+    @include flexbox($justify-content: flex-start);
+    column-gap: 1rem;
+  }
+
+  &__button {
+    @include flexbox();
+    background-color: $first-color;
+    padding: 0.5rem 1rem;
+    border-radius: 1.75rem;
+    column-gap: 5px;
+    cursor: pointer;
+    transition: all 0.5s;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+
+  &__icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  &__button-text {
+    white-space: nowrap;
+    font-size: $normal-font-size;
+    font-weight: $font-semi-bold;
+  }
+
+  @media screen and (min-width: $small-screen) {
+    &__container {
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+    }
+
+    &__description {
+      font-size: $normal-font-size;
+    }
+
+    &__svg {
+      order: 1;
+    }
+  }
+
+  @media screen and (min-width: $medium-screen) {
+    &__icon {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    &__button {
+      padding: 0.75rem 1.25rem;
+    }
+
+    &__button-text {
+      font-size: $big-font-size;
+    }
+  }
+
+  @media screen and (min-width: $large-screen) {
+    &__title {
+      font-size: $mega-font-size;
+      margin-bottom: 1.5rem;
+    }
+
+    &__description {
+      margin-bottom: 1.5rem;
+      line-height: 1.5rem;
+    }
+
+    &__container {
+      row-gap: 3rem;
+    }
+  }
+}
